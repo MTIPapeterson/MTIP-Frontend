@@ -29,7 +29,6 @@ export default function Page({ params }) {
         }
     }, [data])
 
-    
 
 
     const Body = () => {
@@ -38,17 +37,14 @@ export default function Page({ params }) {
                 <div>
                     <h1 className="text-[40px] border-b-solid border-b-[1px] border-black my-[20px]">{title}</h1>
                 </div>
-                <div className="max-w-[800px]" dangerouslySetInnerHTML={{__html: pageContent?.content}} /> 
+                <div className="max-w-[800px]" dangerouslySetInnerHTML={{__html: pageContent?.content}}/> 
             </div>
         )
     }
 
-    
-
     return (
     <div>
-    {!isLoading && <Body/>}
+    {isLoading ? "" : <Body/>}
     </div>
-    
     )
 }

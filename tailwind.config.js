@@ -7,6 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+        fontFamily: {
+          satoshi: ['Satoshi', 'sans-serif'],
+          satoshiItalic: ['SatoshiItalic', 'sans-serif']
+        },
+        colors: {
+          'mt-night': "#1F2121",
+          'mt-blue': {
+            'dark': '#0978FF',
+            'light': '#EEF7FF',
+          },
+          'mt-yellow': {
+            'dark': '#FFB600',
+            'light': '#FFFEF0',
+          },
+        }
     },
   },
   plugins: [],

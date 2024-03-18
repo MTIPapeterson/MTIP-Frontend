@@ -19,7 +19,8 @@ const getWPContent = (page, setData) => {
     const pages = {
        "home" : HOME_QUERY,
        "resourceLinks" : RESOURCES_PAGE_LINKS,
-       "resourcePage" : RESOURCES_PAGE_CONTENT
+       "resourcePage" : RESOURCES_PAGE_CONTENT,
+       "about" : ABOUT_CONTACT
     }
     fetchWPContent(pages[page], setData)
 }
@@ -104,3 +105,14 @@ query NewQuery {
   }
 }
 `
+
+const ABOUT_CONTACT = `
+query NewQuery {
+  aboutContacts {
+    nodes {
+      aboutContactContent {
+        about
+      }
+    }
+  }
+}`

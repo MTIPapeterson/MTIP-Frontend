@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { getWPContent } from "../wordpressCMS/wordpressContent";
+import Link from "next/link";
+import ArrowSVG from "../assets/icons/arrow.svg"
 
 const atomImage = <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 984.725 448.487">
 <g id="Group_545" data-name="Group 545" transform="translate(986.448 -1631.083)">
@@ -19,9 +21,14 @@ const atomImage = <svg xmlns="http://www.w3.org/2000/svg" width="600" height="40
 </g>
 </svg>
 
+// const arrowSVG = <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.74 39.62">
+// <polygon class="cls-1" points="36.7 0 2.41 0 2.41 6.07 29.37 6.07 .26 35.19 4.55 39.48 33.67 10.37 33.67 37.34 39.74 37.34 39.74 3.04 36.7 0"/>
+// </svg>
+
+
+
 export default function Home() {
    const [data, setData] = useState(null)
-
    const [isLoading, setIsLoading] = useState(true)
 
    let actionLinksTitle
@@ -31,9 +38,9 @@ export default function Home() {
    let scondaryInformation
    let scondaryInformationDescription
    let heroImage
-   let homeLinks = []
-   let homeLinksWide = []
    let quotes
+   let homeLinksWide = []
+   let homeLinks = []
 
    useEffect(() => {
       getWPContent("home", setData) 
@@ -62,34 +69,45 @@ export default function Home() {
     return (
     <>
       <div className="bg-[#1F2121] text-white overflow-x-hidden"> 
-        <div className="flex flex-col mx-[40px] h-[600px]">
-          <h1 className="uppercase text-[60px] my-[40px] tracking-tight leading-[60px] max-w-[900px]">{heroTitle}</h1>
-          <div className="grid grid-cols-3">
-            <p className="col-span-2">{heroDescription}</p>
-            {/* <img className="col-span-1" src={heroImage}/> */}
-            <div className="">
+        <div className="flex flex-col mx-[40px]">
+          <h1 className="uppercase text-[60px] my-[40px] tracking-tight leading-[60px] max-w-[900px] font-[600] text-mt-blue-light">{heroTitle}</h1>
+          <div className="grid grid-cols-2">
+            <div className="col-span-1">
+            <p className="font-[100]">{heroDescription}</p>
+            <div className="my-4 border-solid border-white border-[1px] px-4 py-[2px] rounded-[7px] w-fit hover:text-black hover:bg-white">
+              <Link className="uppercase" href={`/${heroButtonLink}`}>get in touch</Link>
+            </div>
+            </div>
+            <div className="col-span-1">
+              
               {atomImage}
+              {/* <img className="col-span-1" src={heroImage}/> */}
             </div>
           </div>
         </div>
       </div>
       <div className="grid grid-cols-2 my-[40px]">
-        <div className="p-[40px]">
-           <h1>{scondaryInformation}</h1>
+        <div className="my-[20px] ml-[40px] pr-[20px] border-r-solid border-r-black border-r-[1px]">
+           <h1 className="text-[32px] font-[500] mb-[20px]">{scondaryInformation}</h1>
            <p>{scondaryInformationDescription}</p>
         </div>
-        <div className="flex flex-col p-[40px]">
-          <h1>{actionLinksTitle}</h1>
-          {homeLinks.map(link => <a>{link.name}</a>)}
+        <div className="flex flex-col my-[20px] ml-[40px]">
+          <h1 className="text-[32px] font-[500] mb-[20px]">{actionLinksTitle}</h1>
+          {homeLinks.map(link => 
+          <div className="border-t-solid border-t-black border-t-[1px] max-w-[300px] flex items-center hover:fill-mt-blue-dark hover:text-mt-blue-dark">
+            <ArrowSVG className="w-[20px] h-[20px] mr-[20px]"/>
+            <Link className="py-[10px] text-[20px] uppercase " href="">{link.name}</Link>
+          </div>
+            )}
         </div>
       </div>
-      <div className="mx-[40px] flex flex-col ">
-        <h1>Learning Resources</h1>
-        {homeLinksWide.map(link => <a>{link.name}</a>)}
+      <div className="mx-[40px] mb-[40px] flex flex-col ">
+        <h1 className="text-[32px] font-[500] mb-[20px]">Learning Resources</h1>
+        {homeLinksWide.map(link => <Link className="w-full text-[30px] bg-mt-yellow-light border-t-solid border-t-mt-yellow-dark border-t-[1px] p-[15px] hover:bg-mt-yellow-dark hover:text-white cursor-pointer" href="">{link.name}</Link>)}
       </div>
       <div className="bg-[#1F2121] flex flex-col text-white">
         <h2 className="self-center">MONTANA SBIR SUCCESS STORIES</h2>
-        <div className="mx-[40px] my-[20px] flex ">
+        <div className="mx-[40px] my-[20px] flex">
           {quotes.map(quote => {
             return(
               <div className="flex flex-col pr-4 w-[350px]">
@@ -114,8 +132,7 @@ export default function Home() {
   return (
     <main>
       <h1>
-        {isLoading && "Loading"}
-        {!isLoading && <Body/>}
+        {isLoading ? "" : <Body/>}
       </h1>
     </main>
   );
