@@ -1,31 +1,28 @@
-const fetchWPContent = (QUERY, setData) => {
-    let data = null
-
-    const wpContent = fetch(process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_ENDPOINT, {
+const fetchWPContent = async (QUERY) => {
+    const res = await fetch(process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_ENDPOINT, {
+        cache: 'no-store',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ query: QUERY }),
       })
-      .then((res) => res.json())
-      .then((result) => setData(result))
-      .catch(() => {
-        console.error("could not find data");
-      })
+    
+    return await res.json()
 }
 
-const getWPContent = (page, setData) => {
+const getWPContent = (page) => {
     const pages = {
        "home" : HOME_QUERY,
        "resourceLinks" : RESOURCES_PAGE_LINKS,
        "resourcePage" : RESOURCES_PAGE_CONTENT,
-       "about" : ABOUT_CONTACT
+       "about" : ABOUT_CONTACT,
+       "docs": DOC_CONTENT,
+       "events": EVENTS
     }
-    fetchWPContent(pages[page], setData)
+    return fetchWPContent(pages[page])
 }
 
-export {getWPContent}
 
 //---------------QUERIES-------------------//
 
@@ -80,6 +77,7 @@ query resourcePageLinks {
       resourcePageContent {
         pageName
       }
+      title
     }
   }
 }
@@ -94,9 +92,10 @@ query NewQuery {
         content
         file {
           node {
+            title
             altText
             fileSize(size: LARGE)
-            uri
+            mediaItemUrl
           }
         }
       }
@@ -111,8 +110,59 @@ query NewQuery {
   aboutContacts {
     nodes {
       aboutContactContent {
+        adress
+        email
+        contanctImage {
+          node {
+            mediaItemUrl
+            altText
+          }
+        }
+        aboutImage {
+          node {
+            altText
+            mediaItemUrl
+          }
+        }
+        phone
+        programDirector
         about
       }
     }
   }
 }`
+
+const DOC_CONTENT = `
+query NewQuery {
+  documentResources {
+    nodes {
+      doccontent {
+        name
+        contentDescription
+      }
+    }
+  }
+}
+`
+
+const EVENTS = `
+query NewQuery {
+  events {
+    nodes {
+      eventContent {
+        date
+        description
+        eventName
+        link
+        image {
+          node {
+            mediaItemUrl
+            altText
+          }
+        }
+      }
+    }
+  }
+}`
+
+export {getWPContent}

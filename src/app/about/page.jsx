@@ -1,35 +1,14 @@
-'use client'
-
 import React from 'react'
 import { getWPContent } from '@/wordpressCMS/wordpressContent'
-import { useState, useEffect } from 'react'
 
-export default function About() {
-    const [data, setData] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
-    const [aboutText, setAboutText] = useState(null)
-    
-    useEffect(() => {
-        getWPContent("about", setData) 
-    }, []);
-  
-    useEffect( () => {
-        data && setIsLoading(false)
-        isLoading ? "..." : setAboutText(data?.data.aboutContacts.nodes[0].aboutContactContent.about)
-        console.log(data)
-    }, [data])
-
-
-
-    const Body = () => {
-        return (
-            <div className="mx-[40px]" dangerouslySetInnerHTML={{__html: aboutText}}/>
-        )
-    }
+export default async function About() {
+    const data = await getWPContent("about") 
+    const aboutText = data?.data.aboutContacts.nodes[0].aboutContactContent.about
 
     return (
-    <div>
-    {isLoading ? "" : <Body/>}
+    <div className='grid pb-[120px] bg-mt-night text-white'>
+        <h1 className="text-[60px] border-b-solid border-b-[1px] border-white my-[20px] mx-[40px] uppercase font-[100]">About</h1>
+        <div className="m-[40px] max-w-[800px] text-[20px]" dangerouslySetInnerHTML={{__html: aboutText}}/>
     </div>
     )
 }
