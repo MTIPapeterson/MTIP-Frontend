@@ -64,7 +64,7 @@ export default async function Home() {
         <div className="flex flex-col mt-[40px] mx-[40px] bg-mt-blue-light p-[25px] rounded-[10px]">
           <h1 className="text-[32px] font-[500] mb-[20px] self-center">{actionLinksTitle}</h1>
           {homeLinks.map(link => 
-          <div className="border-t-solid border-t-black border-t-[1px] w-full flex items-center hover:fill-mt-blue-dark hover:text-mt-blue-dark">
+          <div className="border-t-solid border-t-black border-t-[1px] w-full flex items-center hover:fill-mt-blue-dark hover:text-mt-blue-dark" key={link.page}>
             <ArrowSVG className="w-[20px] h-[20px] mr-[20px]"/>
             <Link className="py-[10px] text-[20px] uppercase " href={link.page}>{link.name}</Link>
           </div>
@@ -74,7 +74,7 @@ export default async function Home() {
       <div className="mx-[40px] mb-[80px] flex flex-col ">
         <h1 className="text-[32px] font-[500] mb-[20px]">Learning Resources</h1>
         {homeLinksWide.map(link => 
-        <div className="w-full grid grid-flow-col items-center bg-mt-yellow-light border-t-solid border-t-mt-yellow-dark border-t-[1px] p-[15px] hover:bg-mt-yellow-dark hover:text-white cursor-pointer hover:fill-white">
+        <div className="w-full grid grid-flow-col items-center bg-mt-yellow-light border-t-solid border-t-mt-yellow-dark border-t-[1px] p-[15px] hover:bg-mt-yellow-dark hover:text-white cursor-pointer hover:fill-white" key={link.page}>
           <Link className="text-[24px] md:text-[30px]" href={link.page}>{link.name}</Link>
         <ArrowSVG className="w-[30px] h-[30px] mr-[20px] justify-self-end"/>
         </div>
@@ -84,7 +84,7 @@ export default async function Home() {
         <h2 className="self-center pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">MONTANA SBIR SUCCESS STORIES</h2>
         <div className="mx-[40px] my-[20px] grid grid-flow-col md:overflow-visible overflow-x-scroll">
           {quotes.map(quote =>
-              <div className="grid grid-flow-row px-4 min-w-[300px] border-r-solid border-r-white border-r-[0.5pt] mb-[40px]">
+              <div className="grid grid-flow-row px-4 min-w-[300px] border-r-solid border-r-white border-r-[0.5pt] mb-[40px]" key={quote.quoteContent.author}> 
                 <p className="text-[16px] font-[100] pb-[40px] self-start ">
                   {quote.quoteContent.quote}
                 </p>
