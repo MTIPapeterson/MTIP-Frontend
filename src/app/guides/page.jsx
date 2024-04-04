@@ -1,6 +1,6 @@
 import React from 'react'
 import { getWPContent } from '@/wordpressCMS/wordpressContent'
-import DocsTable from './DocTable'
+import DocsTable from './docTable'
 
 export default async function Docs() {
     const data = await getWPContent("docs") 

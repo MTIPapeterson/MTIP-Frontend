@@ -25,7 +25,8 @@ export default async function Events() {
   }
 
   return (
-    <div className='h-screen ml-[40px] mt-[20px]'>
+    <div className='h-screen mx-[40px] mt-[20px]'>
+      <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] uppercase font-[100] mb-[40px]">Upcoming events</h1>
       {events.length == 0 ? <p className='text-[20px] uppercase text-mt-blue-dark'>No upcoming events</p>: <EventList events={events}/>}
     </div>
   )
