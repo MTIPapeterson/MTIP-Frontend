@@ -5,6 +5,7 @@ import NewsLetter from "./components/newletter";
 import AtomSvg from "@/assets/icons/atom.svg"
 import ParallaxHome from "./components/parallaxHome";
 import HandShake from '@/assets/icons/handshake.svg'
+import { getContent } from "../../sanity/sanit-utils";
 
 
 // const arrowSVG = <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.74 39.62">
@@ -19,6 +20,10 @@ export default async function Home() {
   const data = await getWPContent("home")
   const homeLinksWide = []
   const homeLinks = []
+
+  const testData = await getContent()
+
+  console.log(testData)
 
   const heroImage = data?.data.home.nodes[0].homeContent.heroImage.node.mediaItemUrl
   const heroTitle = data?.data.home.nodes[0].homeContent.home
