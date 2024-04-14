@@ -18,6 +18,5 @@ export default function StudioPage() {
     <div className='absolute top-0 w-full z-[9999]'>
       <NextStudio config={config} />
     </div>
-  
   )
 }

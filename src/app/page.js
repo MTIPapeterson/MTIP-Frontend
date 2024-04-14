@@ -21,7 +21,7 @@ export default async function Home() {
   const homeLinksWide = []
   const homeLinks = []
 
-  const testData = await getContent()
+  const testData = await getContent('')
 
   console.log(testData)
 
