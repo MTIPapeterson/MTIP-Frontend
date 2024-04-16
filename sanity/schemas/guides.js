@@ -12,7 +12,7 @@ export default {
             name: 'bodyText',
             title: 'Body Text',
             type: 'array', 
-            of: [{type: 'block'}]
+            of: [{type: 'block'}, {type: 'image'}]
         },
         {
             name: 'image',

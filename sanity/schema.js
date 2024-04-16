@@ -4,7 +4,8 @@ import events from "./schemas/events"
 import resources from "./schemas/resources"
 import guides from "./schemas/guides"
 import settings from "./schemas/settings"
+import blogPost from "./schemas/blogPost"
 
 export const schema = {
-  types: [homepage, about, events, resources, guides, settings],
+  types: [homepage, about, events, resources, guides, settings, blogPost],
 }

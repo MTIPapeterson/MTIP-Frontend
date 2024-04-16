@@ -3,16 +3,8 @@ import ArrowSVG from "@/assets/icons/arrow.svg"
 import { getWPContent } from "@/wordpressCMS/wordpressContent";
 import NewsLetter from "./components/newletter";
 import AtomSvg from "@/assets/icons/atom.svg"
-import ParallaxHome from "./components/parallaxHome";
 import HandShake from '@/assets/icons/handshake.svg'
 import { getContent } from "../../sanity/sanit-utils";
-
-
-// const arrowSVG = <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.74 39.62">
-// <polygon class="cls-1" points="36.7 0 2.41 0 2.41 6.07 29.37 6.07 .26 35.19 4.55 39.48 33.67 10.37 33.67 37.34 39.74 37.34 39.74 3.04 36.7 0"/>
-// </svg>
-
-
 
 
 export default async function Home() {
@@ -22,8 +14,6 @@ export default async function Home() {
   const homeLinks = []
 
   const testData = await getContent('')
-
-  console.log(testData)
 
   const heroImage = data?.data.home.nodes[0].homeContent.heroImage.node.mediaItemUrl
   const heroTitle = data?.data.home.nodes[0].homeContent.home

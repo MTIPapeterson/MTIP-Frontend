@@ -3,7 +3,11 @@ import client from "./lib/client"
 
 export async function getContent (query) {
     return client.fetch(
-        contentQueries[query]
+        contentQueries[query],
+        {},
+        {
+            cache: 'no-cache'
+        }
     )
 }
 

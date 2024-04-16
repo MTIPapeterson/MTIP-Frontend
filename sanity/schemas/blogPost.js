@@ -1,6 +1,6 @@
 export default {
-    name: 'resources',
-    title: 'Resources',
+    name: 'blogPost',
+    title: 'Blog Post',
     type: 'document',
     fields: [
         {
@@ -25,8 +25,8 @@ export default {
             of: [{type: 'block'}, {type: 'image'}]
         },
         {
-            name: 'image',
-            title: 'Image',
+            name: 'coverImage',
+            title: 'Cover Image',
             type: 'image'
         },
         {

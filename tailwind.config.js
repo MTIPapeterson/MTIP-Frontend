@@ -12,7 +12,7 @@ module.exports = {
           satoshiItalic: ['SatoshiItalic', 'sans-serif']
         },
         colors: {
-          'mt-night': "#1F2121",
+          'mt-night': "#101112",
           'mt-blue': {
             'dark': '#0978FF',
             'light': '#EEF7FF',
