@@ -65,63 +65,88 @@ export default {
             ]
         },
         {
-            name: 'actionLinks',
-            title: 'Action Links',
-            type: 'array',
-            of: [
+            name: "actionLinkList",
+            title: "Action Link List",
+            type: "document",
+            fields:[
                 {
-                    type: 'object',
-                    fields: [
-                        {
-                            name: 'name',
-                            title: 'Name',
-                            type: 'string'
-                        },
-                        {
-                            name: 'page',
-                            title: 'Page',
-                            type: 'string',
-                            description: 'The page route of an existing page. Routes begin with "/" followed by page name, for example "/resources/pageName". The route can be found in address bar after the main URL.',
-                            validation: rule => rule.required().custom(value => {                    
-                                if (value.includes(' ')) {
-                                  return 'This field cannot contain spaces.'
-                                }
-                                return true
-                              })
-                        }
-                    ]
-                }
+                    name: 'header',
+                    title: 'Header',
+                    type: 'string'
+                },
+                {
+                name: 'actionLinks',
+                title: 'Action Links',
+                type: 'array',
+                of: [
+                    {
+                        type: 'object',
+                        fields: [
+                            {
+                                name: 'name',
+                                title: 'Name',
+                                type: 'string'
+                            },
+                            {
+                                name: 'page',
+                                title: 'Page',
+                                type: 'string',
+                                description: 'The page route of an existing page. Routes begin with "/" followed by page name, for example "/resources/pageName". The route can be found in address bar after the main URL.',
+                                validation: rule => rule.required().custom(value => {                    
+                                    if (value.includes(' ')) {
+                                    return 'This field cannot contain spaces.'
+                                    }
+                                    return true
+                                })
+                            }
+                        ]
+                    }
+                ]
+                },
             ]
         },
+
         {
-            name: 'resourceLinks',
-            title: 'Resource Links',
-            type: 'array',
-            of: [
+            name: "resourceLinkList",
+            title: "Resource Link List",
+            type: "document",
+            fields:[
                 {
-                    type: 'object',
-                    fields: [
-                        {
-                            name: 'name',
-                            title: 'Name',
-                            type: 'string'
-                        },
-                        {
-                            name: 'page',
-                            title: 'Page',
-                            type: 'string',
-                            description: 'The page route of an existing page. Routes begin with "/" followed by page name, for example "/resources/pageName". The route can be found in address bar after the main URL.',
-                            validation: rule => rule.required().custom(value => {                    
-                                if (value.includes(' ')) {
-                                  return 'This field cannot contain spaces.'
-                                }
-                                return true
-                              })
-                        }
+                    name: 'header',
+                    title: 'Header',
+                    type: 'string'
+                },
+                {
+                name: 'resourceLinks',
+                title: 'Resource Links',
+                type: 'array',
+                of: [
+
+                    {
+                        type: 'object',
+                        fields: [
+                            {
+                                name: 'name',
+                                title: 'Name',
+                                type: 'string'
+                            },
+                            {
+                                name: 'page',
+                                title: 'Page',
+                                type: 'string',
+                                description: 'The page route of an existing page. Routes begin with "/" followed by page name, for example "/resources/pageName". The route can be found in address bar after the main URL.',
+                                validation: rule => rule.required().custom(value => {                    
+                                    if (value.includes(' ')) {
+                                    return 'This field cannot contain spaces.'
+                                    }
+                                    return true
+                                })
+                            }
+                        ]
+                    }
                     ]
-                }
-            ]
-        },
+                },
+        ]},
         {
             name: "quotesList",
             title: "Quotes List",

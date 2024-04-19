@@ -1,31 +1,24 @@
 import Link from "next/link";
 import ArrowSVG from "@/assets/icons/arrow.svg"
-import { getWPContent } from "@/wordpressCMS/wordpressContent";
 import NewsLetter from "./components/newletter";
-import AtomSvg from "@/assets/icons/atom.svg"
-import HandShake from '@/assets/icons/handshake.svg'
 import { getContent } from "../../sanity/sanit-utils";
 
 
 export default async function Home() {
 
-  const data = await getWPContent("home")
-  const homeLinksWide = []
-  const homeLinks = []
-
-  const testData = await getContent('')
-
-  const heroImage = data?.data.home.nodes[0].homeContent.heroImage.node.mediaItemUrl
-  const heroTitle = data?.data.home.nodes[0].homeContent.home
-  const heroDescription = data?.data.home.nodes[0].homeContent.heroDescription
-  const heroButtonLink = data?.data.home.nodes[0].homeContent.heroButtonLink
-  const secondaryInformationTitle = data?.data.home.nodes[0].homeContent.scondaryInformation
-  const secondaryInformationDescription = data?.data.home.nodes[0].homeContent.scondaryInformationDescription
-  const actionLinksTitle = data?.data.home.nodes[0].homeContent.actionLinksTitle
-  data?.data.homeLinks.nodes.forEach(link => {
-    link.homeLinkContent.makeWideLink ? homeLinksWide.push(link.homeLinkContent) : homeLinks.push(link.homeLinkContent)
-  });
-  const quotes = data?.data.quotes.nodes
+  const data = await getContent('homepage')
+  
+  const heroImage = data.heroImage
+  const heroTitle = data.hero.header
+  const heroDescription = data.hero.description
+  const heroButtonLink = data.hero.buttonLink
+  const secondaryInformationTitle = data.secondaryInfo.header 
+  const secondaryInformationDescription = data.secondaryInfo.description
+  const secondaryImage = data.secondaryImage
+  const actionLinksTitle = data.actionLinkList.header
+  const resourceLinksTitle = data.resourceLinkList.header
+  const quoteHeader = data.quotesList.header
+  const quotes = data.quotesList.quotes
 
   return (
       <>
@@ -36,12 +29,11 @@ export default async function Home() {
               <h1 className="text-[50px] md:text-[60px] mt-[40px] mb-[20px] leading-[60px] md:leading-[70px] max-w-[900px] font-[600] text-mt-blue-dark">{heroTitle}</h1>
               <p className="font-[400] text-[20px]">{heroDescription}</p>
               <div className="my-6 border-solid bg-white border-mt-blue-dark border-[1px] px-4 py-[2px] rounded-[7px] w-fit hover:text-white hover:bg-mt-blue-dark relative z-[10] transition duration-150">
-                <Link className="uppercase text-[20px]" href={`/${heroButtonLink}`}>get in touch</Link>
+                <Link className="uppercase text-[20px]" href={`${heroButtonLink}`}>get in touch</Link>
               </div>
             </div>
             <div className="col-span-1 relative top-[-100px] h-[200px] md:h-full md:top-0">
-              <AtomSvg className="w-[700px] h-[400px]"/>
-              {/* <img className="col-span-1" src={heroImage}/> */}
+              <img className="w-[700px] h-[400px]" src={heroImage}/>
             </div>
           </div>
         </div>
@@ -49,7 +41,7 @@ export default async function Home() {
       <div className="grid grid-cols-1 my-[20px]">
         <div className="col-span-1 my-[40px] md:my-[80px] mx-[20px] md:mx-[40px]">
           <div className="grid grid-flow-row md:grid-flow-col">
-            <HandShake className="w-[300px] h-[200px] self-center justify-self-center md:mb-0 mb-[20px]"/>
+            <img className="w-[300px] h-[200px] self-center justify-self-center md:mb-0 mb-[20px]" src={secondaryImage}/>
             <div>
               <h1 className="text-[32px] font-[500] mb-[20px]">{secondaryInformationTitle}</h1>
               <p className="text-[18px] max-w-[700px]">{secondaryInformationDescription}</p>
@@ -58,7 +50,7 @@ export default async function Home() {
         </div>
         <div className="flex flex-col my-[40px] mx-[20px] md:mx-[40px] bg-mt-blue-light p-[25px] rounded-[10px]">
           <h1 className="text-[32px] font-[500] mb-[20px] self-center">{actionLinksTitle}</h1>
-          {homeLinks.map(link => 
+          {data.actionLinkList.actionLinks.map(link => 
           <div className="border-t-solid border-t-black border-t-[1px] w-full flex items-center hover:fill-mt-blue-dark hover:text-mt-blue-dark" key={link.page}>
             <ArrowSVG className="w-[20px] h-[20px] mr-[20px]"/>
             <Link className="py-[10px] text-[20px] uppercase " href={link.page}>{link.name}</Link>
@@ -67,8 +59,8 @@ export default async function Home() {
         </div>
       </div>
       <div className="mx-[20px] md:mx-[40px] mb-[80px] flex flex-col ">
-        <h1 className="text-[32px] font-[500] mb-[20px]">Learning Resources</h1>
-        {homeLinksWide.map(link => 
+        <h1 className="text-[32px] font-[500] mb-[20px]">{resourceLinksTitle}</h1>
+        {data.resourceLinkList.resourceLinks.map(link => 
         <div className="w-full grid grid-flow-col items-center bg-mt-yellow-light border-t-solid border-t-mt-yellow-dark border-t-[1px] p-[15px] hover:bg-mt-yellow-dark hover:text-white cursor-pointer hover:fill-white" key={link.page}>
           <Link className="text-[24px] md:text-[30px]" href={link.page}>{link.name}</Link>
         <ArrowSVG className="w-[30px] h-[30px] mr-[20px] justify-self-end"/>
@@ -76,19 +68,19 @@ export default async function Home() {
         )}
       </div>
       <div className="bg-[#1F2121] py-[40px] flex flex-col text-white">
-        <h2 className="self-center pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">MONTANA SBIR SUCCESS STORIES</h2>
+        <h2 className="self-center pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">{quoteHeader}</h2>
         <div className="mx-[20px] md:mx-[40px] my-[20px] grid grid-flow-col md:overflow-visible overflow-x-scroll">
           {quotes.map(quote =>
-              <div className="grid grid-flow-row px-4 min-w-[300px] border-r-solid border-r-white border-r-[0.5pt] mb-[40px]" key={quote.quoteContent.author}> 
+              <div className="grid grid-flow-row px-4 min-w-[300px] border-r-solid border-r-white border-r-[0.5pt] mb-[40px]" key={quote.author}> 
                 <p className="text-[16px] font-[100] pb-[40px] self-start ">
-                  {quote.quoteContent.quote}
+                  {quote.quote}
                 </p>
                 <div className="self-end pb-[20px]">
                   <p className="uppercase font-bold">
-                    {quote.quoteContent.author}
+                    {quote.author}
                   </p>
                   <p className="text-[14px] font-[100]">
-                    {quote.quoteContent.company}
+                    {quote.company}
                   </p>
                 </div>
               </div>  

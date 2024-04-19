@@ -11,13 +11,35 @@ export async function getContent (query) {
     )
 }
 
+export async function getDynamicContent (type, slug) {
+    return client.fetch(
+        groq`*[_type == "${type}" && pageName.current == "${slug}"][0]{
+            title,
+            bodyText,
+            "image": image.asset->url,
+            documents,
+            links,
+            "files": documents[]{
+                "url": file.asset->url,
+                name
+            }
+        }`,
+        {},
+        {
+            cache: 'no-cache'
+        }
+    )
+}
+
 
 const HOMEPAGE = groq`*[_type == "homepage"][0]{
     title,
     hero,
+    "heroImage": hero.heroImage.asset->url,
     secondaryInfo,
-    actionLinks,
-    resourceLinks,
+    "secondaryImage": secondaryInfo.image.asset->url,
+    actionLinkList,
+    resourceLinkList,
     quotesList,
     settings
 }
@@ -42,13 +64,12 @@ const GUIDES = groq`*[_type == "guides"]{
     title,
     bodyText,
     "image": image.asset->url
+}
 `
 const RESOURCES = groq`*[_type == "resources"]{
     title,
-    bodyText,
     "image": image.asset->url,
-    documents,
-    links
+    "pageName": pageName.current
 }
 `
 

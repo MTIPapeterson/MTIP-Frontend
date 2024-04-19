@@ -1,20 +1,22 @@
 import React from 'react'
 import { getWPContent } from '@/wordpressCMS/wordpressContent'
 import DocsTable from './docTable'
+import { getContent } from '../../../sanity/sanit-utils'
 
 export default async function Docs() {
-    const data = await getWPContent("docs") 
-    const documentsData = data?.data.documentResources.nodes
-    
+
+    const sanityData = await getContent("guides")
+  
     function reduce(prev, curr){
-        return {...prev, [curr.doccontent.name]: curr.doccontent}
+        return {...prev, [curr.title]: curr.bodyText}
     }
-    const documents = documentsData.reduce(reduce, {})
+    
+    const guides = sanityData.reduce(reduce, {})
 
     return (
     <div>
         <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] mx-[40px] uppercase font-[100]">Guides</h1>
-        <DocsTable documents={documents}/>
+        <DocsTable guides={guides}/>
     </div>
     )
 }

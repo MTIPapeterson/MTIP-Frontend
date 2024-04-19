@@ -45,13 +45,13 @@ const textStyle = {
         h4: ({children}) => <h4 className="text-[26px]">{children}</h4>,
         h5: ({children}) => <h5 className="text-[22px]">{children}</h5>,
         h6: ({children}) => <h6 className="text-[20px]">{children}</h6>,
-        blockquote: ({children}) => <blockquote className="text-[18px] font-[200] text-gray-400">{children}</blockquote>
+        blockquote: ({children}) => <blockquote className="text-[18px] font-[200] text-gray-400">{children}</blockquote>,
+        normal: ({children}) => <p className="mb-[20px]">{children}</p>,        
     },
     list: {
       bullet: ({children}) => <ul className="list-disc ml-4 leading-8">{children}</ul>,
       number: ({children}) => <ol className="list-decimal ml-[20px] leading-8">{children}</ol>,
-    },
-    
+    },  
 }
 
 

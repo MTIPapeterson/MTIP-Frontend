@@ -14,10 +14,11 @@ export default function NavBar({resources}) {
     const Dropdown = ({data}) => {
         return (
             <div className='relative' onMouseOver={()=> setShowResources(true)} onMouseOut={() => setShowResources(false)}>
-                <p className="hover:cursor-pointer py-4 pl-[40px] text-[32px] md:text-[16px] md:pl-0 md:py-0">Resources</p>
+                <p className={`hover:cursor-pointer py-4 pl-[40px] text-[32px] md:text-[16px] md:pl-0 md:py-0 ${showResources ? "text-mt-blue-dark": ""}`} >Resources +</p>
                 {showResources ? 
-                <div className='z-[20] absolute left-[-1rem] flex flex-col md:w-[210px] bg-white text-black pl-4 py-4 border-solid border-[1px] border-gray-200 border-t-0'>
-                {data?.data.resourcePages.nodes.map(page => <Link className="hover:text-mt-blue-dark ml-[40px] md:ml-0 transition duration-150" key={page.title} href={`/resources/${page.resourcePageContent.pageName}`}>{page.title}</Link>) }
+                <div className='z-[20] absolute left-[-1rem] flex flex-col md:w-[250px]  text-black '>
+                <div className='h-[26px] bg-white'></div>
+                {data ? <div className='flex flex-col border-solid border-[1px] pl-4 pb-4 bg-white border-gray-200 border-t-0'>{data?.map(page => <Link className="hover:text-mt-blue-dark ml-[40px] md:ml-0 transition duration-150 pt-2" key={page.title} href={`/resources/${page.pageName}`} onClick={()=> setShowResources(false)}>{page.title}</Link>)} </div> : ""}
                 </div>
                 : ""}
             </div>
