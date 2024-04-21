@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="font-satoshi flex md:grid">
       <Header/>
-        <div className="justify-self-center w-full max-w-[1600px] mt-[76px]">
+        <div className="justify-self-center w-full mt-[76px]">
           {children}
         <Footer/>
         </div>

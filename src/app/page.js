@@ -22,21 +22,18 @@ export default async function Home() {
 
   return (
       <>
-      <div className=" text-black overflow-hidden bg-mt-blue-light min-h-[500px] border-b-mt-blue-dark border-b-[1px]"> 
-        <div className="flex flex-col mx-[20px] md:mx-[40px]">
-          <div className="grid grid-cols-1 md:grid-cols-3 ">
-            <div className="col-span-1 md:col-span-2 md:pr-[20px]">
-              <h1 className="text-[50px] md:text-[60px] mt-[40px] mb-[20px] leading-[60px] md:leading-[70px] max-w-[900px] font-[600] text-mt-blue-dark">{heroTitle}</h1>
-              <p className="font-[400] text-[20px]">{heroDescription}</p>
-              <div className="my-6 border-solid bg-white border-mt-blue-dark border-[1px] px-4 py-[2px] rounded-[7px] w-fit hover:text-white hover:bg-mt-blue-dark relative z-[10] transition duration-150">
-                <Link className="uppercase text-[20px]" href={`${heroButtonLink}`}>get in touch</Link>
-              </div>
+      <div className=" text-white relative overflow-hidden bg-black h-[91vh] grid"> 
+
+            <div className="col-span-1 ml-10 mt-10 z-10">
+              <h1 className="text-[50px] md:text-[4.5rem] mb-[20px] leading-[60px] md:leading-[5.2rem] max-w-[900px] font-[500] text-white">{heroTitle}</h1>
+              <p className="font-[400] text-[20px] max-w-[600px]">{heroDescription}</p>
+                <p className="uppercase text-[2.5rem] font-[300] w-[320px] mt-6">
+                  Start Your Journey&nbsp; 
+                <Link className="text-mt-blue-dark underline hover:text-mt-blue-light duration-300" href={`${heroButtonLink}`}>Today</Link>
+                </p>
             </div>
-            <div className="col-span-1 relative top-[-100px] h-[200px] md:h-full md:top-0">
-              <img className="w-[700px] h-[400px]" src={heroImage}/>
-            </div>
-          </div>
-        </div>
+              
+        <img className="absolute bottom-0" src={heroImage}/>
       </div>
       <div className="grid grid-cols-1 my-[20px]">
         <div className="col-span-1 my-[40px] md:my-[80px] mx-[20px] md:mx-[40px]">
@@ -67,7 +64,7 @@ export default async function Home() {
         </div>
         )}
       </div>
-      <div className="bg-[#1F2121] py-[40px] flex flex-col text-white">
+      <div className="bg-black py-[40px] flex flex-col text-white">
         <h2 className="self-center pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">{quoteHeader}</h2>
         <div className="mx-[20px] md:mx-[40px] my-[20px] grid grid-flow-col md:overflow-visible overflow-x-scroll">
           {quotes.map(quote =>

@@ -16,9 +16,9 @@ export default function NavBar({resources}) {
             <div className='relative' onMouseOver={()=> setShowResources(true)} onMouseOut={() => setShowResources(false)}>
                 <p className={`hover:cursor-pointer py-4 pl-[40px] text-[32px] md:text-[16px] md:pl-0 md:py-0 ${showResources ? "text-mt-blue-dark": ""}`} >Resources +</p>
                 {showResources ? 
-                <div className='z-[20] absolute left-[-1rem] flex flex-col md:w-[250px]  text-black '>
-                <div className='h-[26px] bg-white'></div>
-                {data ? <div className='flex flex-col border-solid border-[1px] pl-4 pb-4 bg-white border-gray-200 border-t-0'>{data?.map(page => <Link className="hover:text-mt-blue-dark ml-[40px] md:ml-0 transition duration-150 pt-2" key={page.title} href={`/resources/${page.pageName}`} onClick={()=> setShowResources(false)}>{page.title}</Link>)} </div> : ""}
+                <div className='z-[20] absolute left-[-1rem] flex flex-col md:w-[250px]  text-white'>
+                <div className='h-[26px] bg-black'></div>
+                {data ? <div className='flex flex-col border-solid border-[1px] pl-4 pb-4 bg-black border-gray-800 border-t-0'>{data?.map(page => <Link className="hover:text-mt-blue-dark ml-[40px] md:ml-0 transition duration-150 pt-2" key={page.title} href={`/resources/${page.pageName}`} onClick={()=> setShowResources(false)}>{page.title}</Link>)} </div> : ""}
                 </div>
                 : ""}
             </div>
@@ -30,9 +30,9 @@ export default function NavBar({resources}) {
         <>
         <Link href="/" className='pr-[15px] font-[600] text-[32px]'>MTIP</Link>
         <div className='hidden space-x-[15px] justify-self-center text-[16px] uppercase md:flex'>
-            <Link className='pr-4 border-r-solid border-r-[1px] border-r-gray-200 hover:text-mt-blue-dark transition duration-150' href="/about">About</Link>
-            <Link  className='pr-4 border-r-solid border-r-[1px] border-r-gray-200  hover:text-mt-blue-dark transition duration-150' href="/events">Events</Link>
-            <div className='flex space-x-[15px] border-r-solid border-r-[1px] border-r-gray-200 pr-4 transition duration-150'>
+            <Link className='pr-4 border-r-solid border-r-[1px] border-r-gray-800 hover:text-mt-blue-dark transition duration-150' href="/about">About</Link>
+            <Link  className='pr-4 border-r-solid border-r-[1px] border-r-gray-800  hover:text-mt-blue-dark transition duration-150' href="/events">Events</Link>
+            <div className='flex space-x-[15px] border-r-solid border-r-[1px] border-r-gray-800 pr-4 transition duration-150'>
                 <Dropdown data={resources}/>
             </div>
             <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150' href="/guides">Guides</Link>
@@ -66,8 +66,8 @@ export default function NavBar({resources}) {
 }
 
     return (
-        <div className='bg-white border-b-solid border-b-gray-200 border-b-[1px] fixed w-full z-[100]'>
-            <div className='grid grid-flow-col h-[60px] mx-[40px] my-2 items-center'>
+        <div className='bg-black fixed w-full z-[100] border-gray-800 border-b-[1px]'>
+            <div className='grid grid-flow-col h-[60px] mx-[40px] my-2 items-center text-white'>
                 <NavWide/>
                 <NavNarrow/>
             </div>

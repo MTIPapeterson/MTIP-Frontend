@@ -1,5 +1,4 @@
 import React from 'react'
-import { getWPContent } from '@/wordpressCMS/wordpressContent'
 import DocsTable from './docTable'
 import { getContent } from '../../../sanity/sanit-utils'
 
