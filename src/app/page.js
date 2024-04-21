@@ -75,7 +75,7 @@ export default async function Home() {
           {quotes.map(quote =>
               <div className="grid grid-flow-row px-4 min-w-[300px] border-r-solid border-l-white border-l-[0.5pt] mb-[40px]" key={quote.author}> 
                 <p className="text-[16px] font-[100] pb-[40px] self-start ">
-                  "{quote.quote}"
+                  {`"${quote.quote}"`}
                 </p>
                 <div className="self-end pb-[20px]">
                   <p className="uppercase font-bold">
