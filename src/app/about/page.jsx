@@ -9,11 +9,13 @@ const PageContent = async() => {
     const data = await getContent('about')
 
     return (
-    <div className='grid pb-[120px] bg-white text-black'>
-        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] mx-[40px] uppercase font-[100]">{data.title}</h1>
-        <div className="m-[40px] max-w-[800px] text-[18px] font-[350]">
+    <div className='flex justify-center'>
+    <div className='grid pb-[120px] bg-white text-black mt-[76px] mx-[40px] w-full max-w-[1400px] '>
+        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] uppercase font-[100]">{data.title}</h1>
+        <div className="my-[40px] max-w-[800px] text-[18px] font-[350]">
             <PortableText value={data.bodyText} components={textStyle}/>
         </div>
+    </div>
     </div>
     )
 }

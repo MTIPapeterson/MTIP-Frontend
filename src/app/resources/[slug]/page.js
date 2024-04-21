@@ -11,7 +11,7 @@ export default async function Page({ params }) {
     if(!data) notFound()
 
     return(
-    <div className="px-[40px] min-h-[750px]">
+    <div className="px-[40px] min-h-[750px] mt-[76px]">
         <h1 className="text-[60px] border-b-solid border-b-[1px] border-black py-[20px] uppercase font-[100]">{data.title}</h1>
         <div className="grid grid-flow-row md:grid-flow-col py-[40px] justify-start">
             <div className="max-w-[800px] text-[18px] font-[350]">

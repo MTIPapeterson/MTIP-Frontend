@@ -11,10 +11,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className="font-satoshi flex md:grid">
       <Header/>
-        <div className="justify-self-center w-full mt-[76px]">
+        <div className="justify-self-center w-full ">
           {children}
         <Footer/>
         </div>

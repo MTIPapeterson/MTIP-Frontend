@@ -64,7 +64,7 @@ const GUIDES = groq`*[_type == "guides"]{
     title,
     bodyText,
     "image": image.asset->url
-}ss
+}
 `
 const RESOURCES = groq`*[_type == "resources"]{
     title,

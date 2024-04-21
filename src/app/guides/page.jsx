@@ -14,7 +14,7 @@ export default async function Docs() {
 
     return (
     <div>
-        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] mx-[40px] uppercase font-[100]">Guides</h1>
+        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] mx-[40px] uppercase font-[100] mt-[76px]">Guides</h1>
         <DocsTable guides={guides}/>
     </div>
     )
