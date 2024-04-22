@@ -58,7 +58,7 @@ export default async function Home() {
            <div className="md:col-span-1 col-span-4 gap-0 h-fit grid justify-items-center self-center mt-10 md:mt-0 text-center mx-4">
               <p>To Date</p>
               <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">148</h1>
-              <p>Montana Business's Have Received Funding</p>
+              <p>Montana Businesses Have Received Funding</p>
             </div>
             <div className="text-center md:text-left md:border-l-[1px] border-l-mt-yellow-dark px-6 col-span-4 md:col-span-3 my-10 md:my-0">
               <h1 className="text-[32px] font-[500] mb-[20px] ">{secondaryInformationTitle}</h1>
