@@ -13,9 +13,11 @@ export default async function Docs() {
     const guides = sanityData.reduce(reduce, {})
 
     return (
-    <div>
-        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] mx-[40px] uppercase font-[100] mt-[76px]">Guides</h1>
+    <div className='grid justify-center'>
+        <div className='mx-[20px] mb-10 md:mx-[40px] max-w-[1400px]'>
+        <h1 className="text-[40px] md:text-[60px] border-b-solid border-b-[1px] border-black my-[40px] uppercase font-[100] mt-32">Guides</h1>
         <DocsTable guides={guides}/>
+        </div>
     </div>
     )
 }

@@ -15,7 +15,7 @@ export default function NewsLetter() {
   }
 
     return (
-    <div className="border-mt-blue-dark border-solid border-[1px] mx-[40px] my-[80px] rounded-[10px] max-w-[1100px] justify-self-center">
+    <div className="border-mt-blue-dark border-solid border-[1px] mx-[20px] md:mx-[40px] my-[80px] rounded-[10px] max-w-[1100px] justify-self-center">
         <form onSubmit={handleOnSubmit}>  
             <div className="grid grid-cols-1 md:grid-cols-2 py-6">
               <div className="mx-[40px] flex flex-col">

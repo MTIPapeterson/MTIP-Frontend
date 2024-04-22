@@ -2,6 +2,10 @@ import Link from "next/link";
 import ArrowSVG from "@/assets/icons/arrow.svg"
 import NewsLetter from "./components/newletter";
 import { getContent } from "../../sanity/sanit-utils";
+import WaveSVG from "@/assets/icons/wave.svg"
+import AtomYellow from "@/assets/icons/atomYellow.svg"
+import TestTubes from "@/assets/icons/testTubes.svg"
+
 
 
 export default async function Home() {
@@ -22,55 +26,76 @@ export default async function Home() {
 
   return (
       <>
-      <div className="text-white bg-black h-[650px] grid mt-[76px] justify-center"> 
-        <div className="max-w-[1400px] flex relative w-full">
-            <div className="mt-20 z-10 w-full mx-[40px]">
-              <h1 className="text-[50px] md:text-[4.2rem] mb-[20px] leading-[60px] md:leading-[5.5rem] max-w-[1400px] font-[900] uppercase text-white">{heroTitle}</h1>
-              {/* <p className="font-[400] text-[20px] max-w-[600px]">{heroDescription}</p> */}
-                <p className="text-[2.5rem] font-[400] leading-[2.7rem] w-[320px] mt-6">
+      <div className="text-white bg-black h-[400px] sm:h-[500px] md:h-[650px] grid mt-[76px] justify-center duration-300  px-[20px] md:px-[40px]"> 
+        <div className="max-w-[1400px] flex relative w-full overflow-hidden">
+            <div className="md:mt-20 mt-10 z-10 w-full">
+              <h1 className="text-[2rem] md:text-[4.2rem] mb-[20px] leading-[2.5rem] md:leading-[5.5rem] max-w-[1400px] font-[900] uppercase text-white">{heroTitle}</h1>
+              
+                <p className="md:text-[2.5rem] text-[1.5rem] font-[400] leading-[2.7rem] w-[320px] mt-6 ">
                   Start Your Journey&nbsp; 
                 <Link className="text-mt-blue-dark underline hover:text-mt-blue-light duration-300" href={`${heroButtonLink}`}>Today</Link>
                 </p>
             </div>
-              
-        <img className="absolute bottom-0" src={heroImage}/>
+          <img className="absolute bottom-0" src={heroImage}/>
         </div>
       </div>
-      <div className="grid justify-center mx-[40px]">
-      <div className="grid grid-cols-1 my-[20px] w-full max-w-[1400px]">
-        <div className="col-span-1 my-[40px] md:my-[80px]">
-          <div className="grid grid-flow-row md:grid-flow-col">
-            <img className="w-[300px] h-[200px] self-center justify-self-center md:mb-0 mb-[20px]" src={secondaryImage}/>
-            <div>
-              <h1 className="text-[32px] font-[500] mb-[20px]">{secondaryInformationTitle}</h1>
-              <p className="text-[18px]">{secondaryInformationDescription}</p>
+      <div className="grid justify-center bg-mt-yellow-light md:px-[40px] px-[10px] py-20 border-b-mt-yellow-dark border-b-[1px]">
+      <div className="flex flex-col w-full max-w-[1400px]">
+            <div className="grid grid-cols-4 w-full md:mb-20">
+            <div className="md:col-span-1 gap-0 h-fit grid justify-items-center self-center text-center mx-4 col-span-4">
+              <p>Montana Companies Have Earned Over</p>
+              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">$273M</h1>
+              <p>In SBIR & STTR Funds</p>
             </div>
-          </div>
-        </div>
-        <div className="flex flex-col my-[40px] bg-mt-blue-light p-[25px] rounded-[10px]">
-          <h1 className="text-[32px] font-[500] mb-[20px] self-center">{actionLinksTitle}</h1>
-          {data.actionLinkList.actionLinks.map(link => 
-          <div className="border-t-solid border-t-black border-t-[1px] w-full flex items-center hover:fill-mt-blue-dark hover:text-mt-blue-dark" key={link.page}>
-            <ArrowSVG className="w-[20px] h-[20px] mr-[20px]"/>
-            <Link className="py-[10px] text-[20px] uppercase " href={link.page}>{link.name}</Link>
-          </div>
-            )}
-        </div>
+            <div className=" text-center md:text-left my-10 md:my-0 md:border-l-[1px] border-l-mt-yellow-dark px-6 md:col-span-3 col-span-4">
+            <h1 className="text-[32px] font-[500] mb-[20px]">How We Help</h1>
+            <p className="text-[16px] md:text-[18px]">{heroDescription}</p>
+            
+            </div>
+            
+            </div>
+           <div className="grid grid-cols-4">
+           <div className="md:col-span-1 col-span-4 gap-0 h-fit grid justify-items-center self-center mt-10 md:mt-0 text-center mx-4">
+              <p>To Date</p>
+              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">148</h1>
+              <p>Montana Business's Have Received Funding</p>
+            </div>
+            <div className="text-center md:text-left md:border-l-[1px] border-l-mt-yellow-dark px-6 col-span-4 md:col-span-3 my-10 md:my-0">
+              <h1 className="text-[32px] font-[500] mb-[20px] ">{secondaryInformationTitle}</h1>
+              <p className="text-[16px] md:text-[18px]">{secondaryInformationDescription}</p>
+            </div>
+            
+            </div>
       </div>
-      
-      <div className="mb-[80px] flex flex-col ">
-        <h1 className="text-[32px] font-[500] mb-[20px]">{resourceLinksTitle}</h1>
-        {data.resourceLinkList.resourceLinks.map(link => 
-        <div className="w-full grid grid-flow-col items-center bg-mt-yellow-light border-t-solid border-t-mt-yellow-dark border-t-[1px] p-[15px] hover:bg-mt-yellow-dark hover:text-white cursor-pointer hover:fill-white" key={link.page}>
+      </div>
+        <div className="flex flex-col items-center w-full my-20 px-[20px] md:px-10">
+        <h1 className="max-w-[1400px] text-[40px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase w-full font-[100]">Resources</h1>
+        <div className="max-w-[1400px] w-full flex flex-col mt-10">
+        
+      <div className="mb-[80px] flex flex-col">
+        <h1 className="text-[24px] md:text-[32px] font-[500] mb-[20px]">{actionLinksTitle}</h1>
+        {data.actionLinkList.actionLinks.map(link => 
+        <div className="w-full grid grid-flow-col items-center bg-mt-blue-light border-t-solid border-t-mt-blue-dark border-t-[1px] p-[15px] hover:bg-mt-blue-dark hover:text-white cursor-pointer hover:fill-white" key={link.page}>
           <Link className="text-[24px] md:text-[30px]" href={link.page}>{link.name}</Link>
-        <ArrowSVG className="w-[30px] h-[30px] mr-[20px] justify-self-end"/>
         </div>
         )}
       </div>
+      <div className="mb-[80px] flex flex-col ">
+        <h1 className="text-[24px] md:text-[32px] font-[500] mb-[20px]">{resourceLinksTitle}</h1>
+        {data.resourceLinkList.resourceLinks.map(link => 
+        <div className="w-full grid grid-flow-col items-center bg-mt-yellow-light border-t-solid border-t-mt-yellow-dark border-t-[1px] p-[15px] hover:bg-mt-yellow-dark hover:text-white cursor-pointer hover:fill-white" key={link.page}>
+          <Link className="text-[24px] md:text-[30px]" href={link.page}>{link.name}</Link>
+        </div>
+        )}
       </div>
-      <div className="bg-black py-[40px] flex text-white justify-center">
-        <div className="max-w-[1400px] w-full flex flex-col mx-[40px]">
-        <h2 className="self-center pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">{quoteHeader}</h2>
+      <WaveSVG className="w-full h-[100px] md:h-[200px]"/>
+      </div>
+      </div>
+     
+      
+      <div className="bg-black py-[40px] px-[20px] flex text-white justify-center">
+        <div className="max-w-[1400px] w-full flex flex-col mx-[20px] md:mx-[40px]">
+        <h2 className="self-center px-[20px] pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">{quoteHeader}</h2>
         <div className="my-[20px] grid grid-flow-col md:overflow-visible overflow-x-scroll">
           {quotes.map(quote =>
               <div className="grid grid-flow-row px-4 min-w-[300px] border-r-solid border-l-white border-l-[0.5pt] mb-[40px]" key={quote.author}> 

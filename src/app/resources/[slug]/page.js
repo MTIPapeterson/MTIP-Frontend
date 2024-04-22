@@ -11,13 +11,14 @@ export default async function Page({ params }) {
     if(!data) notFound()
 
     return(
-    <div className="px-[40px] min-h-[750px] mt-[76px]">
-        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black py-[20px] uppercase font-[100]">{data.title}</h1>
+    <div className="flex justify-center w-full">
+    <div className="mx-[20px] md:mx-[40px] min-h-[750px] mt-32 max-w-[1400px] w-full">
+        <h1 className="text-[28px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase font-[100]">{data.title}</h1>
         <div className="grid grid-flow-row md:grid-flow-col py-[40px] justify-start">
             <div className="max-w-[800px] text-[18px] font-[350]">
                 <PortableText value={data.bodyText} components={textStyle}/>
             </div>
-            <div className="flex flex-col bg-mt-blue-light p-4 rounded-lg ml-0 md:ml-6 h-full max-h-[550px] min-w-[300px]">
+            <div className="flex flex-col bg-mt-blue-light p-4 rounded-lg ml-0 md:ml-6 h-full max-h-[550px] w-full md:min-w-[300px]">
             {data.files ? <div className="mb-6"> {data.files.map( d => <div className="border-[1px] border-black p-2 rounded-md h-min text-center text-[20px] uppercase hover:bg-black hover:text-white cursor-pointer flex hover:fill-white items-center justify-center" key={d.url}><FileSvg className="mr-2"/><a href={d.url} download={d.name}>{d.name}</a></div>)} </div> : ""}
             <div className="flex flex-col">
                 <p className="font-[600] text-gray-800 mb-[5px]">Other Resources</p>
@@ -25,6 +26,7 @@ export default async function Page({ params }) {
             </div>
             </div>
         </div>
+    </div>
     </div>
     )
 }

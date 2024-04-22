@@ -26,9 +26,9 @@ export default function DocsTable({guides}) {
   }
 
   return (
-    <div className='m-[20px] md:m-[40px] grid grid-cols-5 bg-mt-blue-light p-0 md:p-[25px] rounded-[10px]'>
+    <div className='grid grid-cols-5 bg-mt-blue-light p-0 md:p-[25px] rounded-[10px]'>
       <SideBar guideKeys={Object.keys(guides)}/>
-      <div className="p-[20px] col-span-5 md:col-span-4 md:ml-[20px] rounded-0 border-[2px] border-mt-blue-light md:rounded-[10px] h-[600px] overflow-y-scroll flex justify-center bg-white">
+      <div className="p-[20px] col-span-5 md:col-span-4 md:ml-[20px] rounded-0 border-[2px] border-mt-blue-light md:rounded-[10px] h-[700px] overflow-y-scroll flex justify-center bg-white">
       <div className="max-w-[700px] w-full pb-[40px]">
         <PortableText value={guides[currDoc]} components={textStyle}/>
       </div>

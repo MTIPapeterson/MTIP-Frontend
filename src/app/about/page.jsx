@@ -10,8 +10,8 @@ const PageContent = async() => {
 
     return (
     <div className='flex justify-center'>
-    <div className='grid pb-[120px] bg-white text-black mt-[76px] mx-[40px] w-full max-w-[1400px] '>
-        <h1 className="text-[60px] border-b-solid border-b-[1px] border-black my-[20px] uppercase font-[100]">{data.title}</h1>
+    <div className='grid pb-[120px] bg-white text-black mt-32 mx-[20px] md:mx-[40px] w-full max-w-[1400px] '>
+        <h1 className="text-[28px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase font-[100]">{data.title}</h1>
         <div className="my-[40px] max-w-[800px] text-[18px] font-[350]">
             <PortableText value={data.bodyText} components={textStyle}/>
         </div>
