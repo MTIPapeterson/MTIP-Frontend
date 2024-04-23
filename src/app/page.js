@@ -16,9 +16,12 @@ export default async function Home() {
   const heroTitle = data.hero.header
   const heroDescription = data.hero.description
   const heroButtonLink = data.hero.buttonLink
-  const secondaryInformationTitle = data.secondaryInfo.header 
-  const secondaryInformationDescription = data.secondaryInfo.description
-  const secondaryImage = data.secondaryImage
+  const secondaryHeader1 = data.secondaryInfo.header1 
+  const secondaryHeader2 = data.secondaryInfo.header2
+  const secondaryDescription1 = data.secondaryInfo.description1
+  const secondaryDescription2 = data.secondaryInfo.description2
+  const secondaryStat1 = data.secondaryInfo.statistic1
+  const secondaryStat2 = data.secondaryInfo.statistic2
   const actionLinksTitle = data.actionLinkList.header
   const resourceLinksTitle = data.resourceLinkList.header
   const quoteHeader = data.quotesList.header
@@ -43,26 +46,26 @@ export default async function Home() {
       <div className="flex flex-col w-full max-w-[1400px]">
             <div className="grid grid-cols-4 w-full md:mb-20">
             <div className="md:col-span-1 gap-0 h-fit grid justify-items-center self-center text-center mx-4 col-span-4">
-              <p>Montana Companies Have Earned Over</p>
-              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">$273M</h1>
-              <p>In SBIR & STTR Funds</p>
+              <p className="font-[500]">Montana Companies Have Earned Over</p>
+              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">{secondaryStat1}</h1>
+              <p className="font-[500]">In SBIR & STTR Funds</p>
             </div>
             <div className=" text-center md:text-left my-10 md:my-0 md:border-l-[1px] border-l-mt-yellow-dark px-6 md:col-span-3 col-span-4">
-            <h1 className="text-[32px] font-[500] mb-[20px]">How We Help</h1>
-            <p className="text-[16px] md:text-[18px]">{heroDescription}</p>
+            <h1 className="text-[32px] font-[500] mb-[20px]">{secondaryHeader1}</h1>
+            <p className="text-[16px] md:text-[18px]">{secondaryDescription1}</p>
             
             </div>
             
             </div>
            <div className="grid grid-cols-4">
            <div className="md:col-span-1 col-span-4 gap-0 h-fit grid justify-items-center self-center mt-10 md:mt-0 text-center mx-4">
-              <p>To Date</p>
-              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">148</h1>
-              <p>Montana Businesses Have Received Funding</p>
+              <p className="font-[500]"> To Date</p>
+              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">{secondaryStat2}</h1>
+              <p className="font-[500]">Montana Businesses Have Received Funding</p>
             </div>
             <div className="text-center md:text-left md:border-l-[1px] border-l-mt-yellow-dark px-6 col-span-4 md:col-span-3 my-10 md:my-0">
-              <h1 className="text-[32px] font-[500] mb-[20px] ">{secondaryInformationTitle}</h1>
-              <p className="text-[16px] md:text-[18px]">{secondaryInformationDescription}</p>
+              <h1 className="text-[32px] font-[500] mb-[20px] ">{secondaryHeader2}</h1>
+              <p className="text-[16px] md:text-[18px]">{secondaryDescription2}</p>
             </div>
             
             </div>

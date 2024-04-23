@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Hamburger from '@/assets/icons/Hamburger.svg'
 import Xsvg from '@/assets/icons/x.svg'
 
-export default function NavBar({resources}) {
+export default function NavBar({resources, logo}) {
     const [showResources, setShowResources] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
     
@@ -28,7 +28,7 @@ export default function NavBar({resources}) {
     const NavWide = () => {
         return ( 
         <div className='hidden md:grid grid-flow-col h-[60px] my-2 items-center text-white w-full'>
-        <Link href="/" className='pr-[15px] font-[600] text-[32px]'>MTIP</Link>
+        <Link href="/" className='pr-[15px] font-[600] text-[32px] w-full'><img className='h-[40px]' src={logo} alt="MTIP LOGO"/></Link>
         <div className='hidden space-x-[15px] justify-self-center text-[16px] uppercase md:flex'>
             <Link className='pr-4 border-r-solid border-r-[1px] border-r-gray-800 hover:text-mt-blue-dark transition duration-150' href="/about">About</Link>
             <Link  className='pr-4 border-r-solid border-r-[1px] border-r-gray-800  hover:text-mt-blue-dark transition duration-150' href="/events">Events</Link>
@@ -45,7 +45,7 @@ export default function NavBar({resources}) {
    const NavNarrow = () => {
     return ( 
     <div className='text-white text-[16px] uppercase md:hidden items-center flex h-[60px] my-2 w-full'>
-        <Link href="/" className='pr-[15px] font-[600] text-[32px]'>MTIP</Link>
+        <Link href="/" className='pr-[15px] font-[600] text-[32px] w-full'><img className='h-[40px]' src={logo} alt="MTIP LOGO"/></Link>
         <div className='justify-end w-full flex items-center'>
         <Link  className='mr-[5px] justify-self-end px-4 rounded-[7px] h-fit py-[4px] bg-mt-blue-dark text-mt-blue-light uppercase hover:bg-mt-blue-light hover:text-mt-blue-dark transition duration-150' href="/contact">Contact us</Link>
         <button className='text-[40px] w-[40px] text-center hover:text-mt-blue-dark' onClick={() => {setShowMenu(!showMenu)} }>{showMenu ? "–": "="}</button>

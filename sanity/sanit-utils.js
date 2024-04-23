@@ -75,12 +75,21 @@ const RESOURCES = groq`*[_type == "resources"]{
 
 const SETTINGS = groq`*[_type == "settings"][0]{
     title,
-    logo,
+    "logo": logo.asset->url,
+    director,
+    building,
     address,
+    poBox,
+    cityStateZip,
     phoneNumber,
+    email,
     privacyPolicy,
     socialMediaLinks,
-    partnerLinks
+    "partnerLinks": partnerLinks[]{
+        "logo": logo.asset->url,
+        name,
+        url
+    }
 }
 `
 

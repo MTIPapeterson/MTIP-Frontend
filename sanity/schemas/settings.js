@@ -15,13 +15,38 @@ export default {
             type: 'image'
         },
         {
+            name: 'director',
+            title: 'Program Director',
+            type: 'string'
+        },
+        {
+            name: 'building',
+            title: 'Building',
+            type: 'string'
+        },
+        {
             name: 'address',
             title: 'Address',
-            type: 'text'
+            type: 'string'
+        },
+        {
+            name: 'poBox',
+            title: 'PO Box',
+            type: 'string'
+        },
+        {
+            name: 'cityStateZip',
+            title: 'City State & Zip',
+            type: 'string'
         },
         {
             name: 'phoneNumber',
             title: 'Phone Number',
+            type: 'string'
+        },
+        {
+            name: 'email',
+            title: 'Email',
             type: 'string'
         },
         {
@@ -60,6 +85,11 @@ export default {
                 {
                     type: 'object',
                     fields: [
+                        {
+                            name: 'logo',
+                            title: 'Logo',
+                            type: 'image'
+                        },
                         {
                             name: 'name',
                             title: 'Name',

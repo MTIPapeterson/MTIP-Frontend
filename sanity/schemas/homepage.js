@@ -19,11 +19,6 @@ export default {
                     type: 'string'
                 },
                 {
-                    name: 'description',
-                    title: 'Description',
-                    type: 'text'
-                },
-                {
                     name: 'buttonLink',
                     title: 'Button Link',
                     type: "string",
@@ -48,19 +43,34 @@ export default {
             type: 'document',
             fields : [
                 {
-                    name: 'header',
+                    name: 'header1',
                     title: 'Header',
                     type: 'string',
                 },
                 {
-                    name: 'description',
+                    name: 'description1',
                     title: 'Description',
                     type: 'text'
                 },
                 {
-                    name: 'image',
-                    title: 'Image',
-                    type: 'image'
+                    name: 'statistic1',
+                    title: 'Statistic',
+                    type: 'string'
+                },
+                {
+                    name: 'header2',
+                    title: 'Header',
+                    type: 'string',
+                },
+                {
+                    name: 'description2',
+                    title: 'Description',
+                    type: 'text'
+                },
+                {
+                    name: 'statistic2',
+                    title: 'Statistic',
+                    type: 'string'
                 }
             ]
         },
