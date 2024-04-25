@@ -35,7 +35,8 @@ export default function NavBar({resources, logo}) {
             <div className='flex space-x-[15px] border-r-solid border-r-[1px] border-r-gray-800 pr-4 transition duration-150'>
                 <Dropdown data={resources}/>
             </div>
-            <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150' href="/guides">Guides</Link>
+            <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150 border-r border-r-gray-800' href="/guides">Guides</Link>
+            <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150 ' href="/blog">Blog</Link>
         </div> 
         <Link  className='hidden md:flex justify-self-end px-6 py-2 rounded-[7px] bg-mt-blue-dark text-mt-blue-light uppercase hover:bg-mt-blue-light hover:text-mt-blue-dark transition duration-150' href="/contact">Contact us</Link>
         </div>  
@@ -56,6 +57,7 @@ export default function NavBar({resources, logo}) {
             <Link onClick={() => {setShowMenu(false)} }  className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-blue-dark' href="/contact">Contact</Link>
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-blue-dark' href="/events">Events</Link>
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-yellow-dark' href="/guides">Guides</Link>
+            <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-yellow-dark' href="/blog">Blog</Link>
             <div className='flex w-full border-b-[1px] border-b-gray-800'>
                 <Dropdown data={resources}/>
             </div>

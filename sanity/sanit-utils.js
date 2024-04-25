@@ -31,6 +31,30 @@ export async function getDynamicContent (type, slug) {
     )
 }
 
+export async function getBlogPost (slug) {
+    return client.fetch(
+        groq`*[_type == "blogPost" && pageName.current == "${slug}"][0]{
+            title,
+            bodyText,
+            "image": coverImage.asset->url,
+            author,
+            publishDate,
+        }`,
+        {},
+        {
+            cache: 'no-cache'
+        }
+    )
+}
+
+const BLOGS =  groq`*[_type == "blogPost"] | order(_createdAt desc) {
+    title,
+    "image": coverImage.asset->url,
+    author,
+    publishDate,
+    bodyText,
+    "pageName": pageName.current
+}`
 
 const HOMEPAGE = groq`*[_type == "homepage"][0]{
     title,
@@ -100,5 +124,6 @@ const contentQueries = {
     'guides': GUIDES,
     'resources': RESOURCES,
     'settings' : SETTINGS,
+    'blogs': BLOGS,
 }
 

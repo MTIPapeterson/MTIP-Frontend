@@ -16,6 +16,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.37.2",
     "@svgr/webpack": "^8.1.0",
+    "@vercel/analytics": "^1.2.2",
     "graphql": "^16.8.1",
     "next": "14.1.2",
     "next-sanity": "^7.1.4",

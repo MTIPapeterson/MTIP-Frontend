@@ -8,10 +8,10 @@ export default async function Footer() {
   const resources = await getContent("resources")
   
   return (
-    <div className='bg-mt-yellow-light border-t-mt-yellow-dark border-t-solid border-t-[1px] flex justify-center'>
+    <div className='bg-black text-white border-t-gray-800 border-t flex justify-center'>
       <div className='w-full max-w-[1400px] mx-[40px]'>
         <div className='grid grid-flow-row text-start md:text-left md:grid-flow-col'>
-                <div className='mt-4 flex flex-col border-r-mt-yellow-dark border-r-solid border-r-[1px]'>
+                <div className='mt-4 flex flex-col border-gray-800 md:border-t-0 md:border-l py-[20px] md:py-0 md:px-[20px]'>
                   <Link href="/about" className='uppercase hover:text-mt-blue-dark'>about</Link>
                   <p className='uppercase'>resources+</p>
                   <div className='flex flex-col max-w-[200px] ml-4 my-2'>
@@ -22,26 +22,29 @@ export default async function Footer() {
                   <Link href="/events" className='uppercase hover:text-mt-blue-dark'>events</Link>
                   <Link href="/guides" className='uppercase hover:text-mt-blue-dark'>Guides</Link>
                 </div>
-                <div className='mt-4 flex flex-col border-r-mt-yellow-dark border-r-solid border-r-[1px] px-[40px]'>
-                  <p className='font-[200]'>{settings.director}, Program Director</p>
-                  <p className='font-[200]'>Montana Innovation Partnership powered by TechLink</p>
-                </div>
-                <div className='mt-4 flex flex-col border-r-mt-yellow-dark border-r-solid border-r-[1px] px-[40px] font-[200]'>
-                  
+                <div className='mt-4 flex flex-col border-gray-800 border-t md:border-t-0 md:border-l font-[200] py-[20px] md:py-0 md:px-[20px]'>
+                  <p className='font-[200]'><span className='font-[800]'>{settings.director}</span>, Program Director</p>
+                  <p className='font-[200] pb-4'>Montana Innovation Partnership powered by TechLink</p>
+                  <p>{settings.email}</p>
+                  <p className='pb-4'>{settings.phoneNumber}</p>
                   <p>{settings.building}</p>
                   <p>{settings.address}</p>
                   <p>{settings.poBox}</p>
-                  <p>{settings.email}</p>
                   <p>{settings.cityStateZip}</p>
-                  <p>{settings.phoneNumber}</p>
+                  
                 </div>
-                <div className='mt-4 flex flex-col border-r-mt-yellow-dark border-r-solid px-[40px]'>
+                <div className='mt-4 flex flex-col py-[20px] md:py-0 md:px-[20px] border-gray-800 border-t md:border-t-0 md:border-l'>
                   {settings.socialMediaLinks.map(l => <a className="hover:text-mt-yellow-dark" href={l.url} key={l.url}>{l.name}</a>)}
                 </div>
         </div>
-        <div className='w-full flex flex-col items-center'>
-          <p className='text-center max-w-[600px] text-[14px] font-[200] mb-[20px] mt-[40px] mx-[40px]'>{settings.privacyPolicy}</p>
-          <p className='font-[600] mb-[40px]'>Copyright 2024 Montana Innovation Partnership</p>
+        <div className='grid grid-cols-1 md:grid-cols-2 mb-[20px] mt-[80px] border-gray-800 border-t md:border-t-0 md:border-l py-[20px] md:py-0 md:px-[20px]'>
+        <div className='w-full flex flex-col'>
+          <p className='max-w-[600px] text-[12px] font-[100]'>{settings.privacyPolicy}</p>
+          <p className='font-[400] mt-[10px] text-[14px] '>© Montana Innovation Partnership</p>
+        </div>
+        <div className='flex w-full items-end justify-start md:justify-end md:mt-0 mt-4'>
+          {settings.partnerLinks.map( p => <a href={p.url} key={p.url} ><img className='h-[50px] object-contain border-l border-l-gray-800 px-[10px]' src={p.logo} /></a>)}
+        </div>
         </div>
         </div>
     </div>
