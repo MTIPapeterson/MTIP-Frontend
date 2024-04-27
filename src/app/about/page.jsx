@@ -1,5 +1,4 @@
 import React from 'react'
-import { getWPContent } from '@/wordpressCMS/wordpressContent'
 import { getContent } from '../../../sanity/sanit-utils'
 import { PortableText } from '@portabletext/react'
 import { textStyle } from '../components/portableTextStyle'
