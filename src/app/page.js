@@ -30,13 +30,12 @@ export default async function Home() {
         <div>
         <h1 className="col-span-1 mb-5 text-[32px] font-[500]">Upcoming Events</h1>
         <div className="flex flex-col">
-        {events.map(e => <div className="bg-mt-blue-light rounded-md p-2 mb-4 grid md:grid-cols-3 grid-cols-1">
+        {events.map(e => <div key={e.title} className="bg-mt-blue-light rounded-md p-2 mb-4 grid md:grid-cols-3 grid-cols-1">
           <h2 className="pb-2 mb-2 md:mb-0 md:pb-0 md:pr-4 border-b md:border-r md:border-b-0 border-mt-blue-dark md:mr-4 font-[600] text-[20px] md:text-[30px] text-center text-mt-blue-dark col-span-1">{formatDate(e.date)}</h2>
           <div className="flex flex-col col-span-1 md:col-span-2">
           <h2 className="text-[20px] font-[450] self-center md:self-start text-center md:text-left">{e.title}</h2>
           <a className="text-[18px] text-mt-blue-dark underline hover:text-black mt-2 text-center md:text-left self-center md:self-start" href={e.link}>Learn More</a>
           </div>
-          
           </div>)}
         </div>
         </div> 
