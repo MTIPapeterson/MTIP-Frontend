@@ -55,7 +55,24 @@ export default {
                 {
                     name: 'statistic1',
                     title: 'Statistic',
-                    type: 'string'
+                    type: 'document',
+                    fields: [
+                        {
+                            name: 'header',
+                            title: 'Header',
+                            type: 'string',
+                        },
+                        {
+                            name: 'statistic',
+                            title: 'Statistic',
+                            type: 'string'
+                        },
+                        {
+                            name: 'footer',
+                            title: 'Footer',
+                            type: 'string',
+                        },
+                    ]
                 },
                 {
                     name: 'header2',
@@ -70,8 +87,25 @@ export default {
                 {
                     name: 'statistic2',
                     title: 'Statistic',
-                    type: 'string'
-                }
+                    type: 'document',
+                    fields: [
+                        {
+                            name: 'header',
+                            title: 'Header',
+                            type: 'string',
+                        },
+                        {
+                            name: 'statistic',
+                            title: 'Statistic',
+                            type: 'string'
+                        },
+                        {
+                            name: 'footer',
+                            title: 'Footer',
+                            type: 'string',
+                        },
+                    ]
+                },
             ]
         },
         {

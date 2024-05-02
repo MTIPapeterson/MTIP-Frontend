@@ -47,6 +47,53 @@ export async function getBlogPost (slug) {
     )
 }
 
+
+export async function getLearningResource (slug) {
+    return client.fetch(
+        groq`*[_type == "learningResources" && pageName.current == "${slug}"][0]{
+            title,
+            "steps": steps[]{
+                header,
+                bodyText,
+                "documents": documents[]{
+                    "url": file.asset->url,
+                    name
+                },
+                links
+            }
+        }`,
+        {},
+        {
+            cache: 'no-cache'
+        }
+    )
+}
+
+export function formatDate(dateString) {
+    // Create a date object adjusted to avoid time zone offset issues
+    const parts = dateString.split('-');
+    const date = new Date(parts[0], parts[1] - 1, parts[2]);
+
+    // Define options for DateTimeFormat
+    const options = {
+        weekday: 'short',  // abbreviated day of week
+        month: 'short',    // abbreviated month
+        day: '2-digit',    // two-digit day
+        year: 'numeric'    // full year
+    };
+
+    // Format the date
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+
+    // Adding the ordinal suffix to day
+    const day = date.getDate();
+    const suffix = ['th', 'st', 'nd', 'rd'][
+        (day % 10 > 3) ? 0 : (day % 100 - day % 10 != 10) * day % 10
+    ];
+
+    return formattedDate.replace(/(\d+)(,)/, `$1${suffix}$2`);
+}
+
 const BLOGS =  groq`*[_type == "blogPost"] | order(_createdAt desc) {
     title,
     "image": coverImage.asset->url,
@@ -93,7 +140,7 @@ const GUIDES = groq`*[_type == "guides"]{
 const RESOURCES = groq`*[_type == "resources"]{
     title,
     "image": image.asset->url,
-    "pageName": pageName.current
+    "pageName": "/resources/" + pageName.current
 }
 `
 
@@ -117,6 +164,12 @@ const SETTINGS = groq`*[_type == "settings"][0]{
 }
 `
 
+const LEARNING_RESOURCES = groq`*[_type == "learningResources"]{
+    title,
+    "pageName": "/guides/" + pageName.current
+}
+`
+
 const contentQueries = {
     'homepage': HOMEPAGE,
     'about': ABOUT,
@@ -125,5 +178,6 @@ const contentQueries = {
     'resources': RESOURCES,
     'settings' : SETTINGS,
     'blogs': BLOGS,
+    'learningResources': LEARNING_RESOURCES
 }
 

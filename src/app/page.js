@@ -1,20 +1,17 @@
 import Link from "next/link";
-import ArrowSVG from "@/assets/icons/arrow.svg"
 import NewsLetter from "./components/newletter";
 import { getContent } from "../../sanity/sanit-utils";
 import WaveSVG from "@/assets/icons/wave.svg"
-import AtomYellow from "@/assets/icons/atomYellow.svg"
-import TestTubes from "@/assets/icons/testTubes.svg"
-
-
+import ChipSVG from "@/assets/icons/chip.svg"
+import { formatDate } from "../../sanity/sanit-utils";
 
 export default async function Home() {
 
   const data = await getContent('homepage')
+  const events = await getContent('events')
   
   const heroImage = data.heroImage
   const heroTitle = data.hero.header
-  const heroDescription = data.hero.description
   const heroButtonLink = data.hero.buttonLink
   const secondaryHeader1 = data.secondaryInfo.header1 
   const secondaryHeader2 = data.secondaryInfo.header2
@@ -26,6 +23,27 @@ export default async function Home() {
   const resourceLinksTitle = data.resourceLinkList.header
   const quoteHeader = data.quotesList.header
   const quotes = data.quotesList.quotes
+
+  const Events = () => {
+    return (
+      <div className="max-w-[1400px] grid grid-cols-1 md:grid-cols-2 border-mt-blue-dark border rounded-md p-4">
+        <div>
+        <h1 className="col-span-1 mb-5 text-[32px] font-[500]">Upcoming Events</h1>
+        <div className="flex flex-col">
+        {events.map(e => <div className="bg-mt-blue-light rounded-md p-2 mb-4 grid md:grid-cols-3 grid-cols-1">
+          <h2 className="pb-2 mb-2 md:mb-0 md:pb-0 md:pr-4 border-b md:border-r md:border-b-0 border-mt-blue-dark md:mr-4 font-[600] text-[20px] md:text-[30px] text-center text-mt-blue-dark col-span-1">{formatDate(e.date)}</h2>
+          <div className="flex flex-col col-span-1 md:col-span-2">
+          <h2 className="text-[20px] font-[450] self-center md:self-start text-center md:text-left">{e.title}</h2>
+          <a className="text-[18px] text-mt-blue-dark underline hover:text-black mt-2 text-center md:text-left self-center md:self-start" href={e.link}>Learn More</a>
+          </div>
+          
+          </div>)}
+        </div>
+        </div> 
+        <ChipSVG className="w-[270px] h-[200px] md:w-[400px] md:h-[300px] justify-self-center stroke-[1px] self-center"/>
+      </div>
+    )
+  }
 
   return (
       <>
@@ -46,9 +64,9 @@ export default async function Home() {
       <div className="flex flex-col w-full max-w-[1400px]">
             <div className="grid grid-cols-4 w-full md:mb-20">
             <div className="md:col-span-1 gap-0 h-fit grid justify-items-center self-center text-center mx-4 col-span-4">
-              <p className="font-[500]">Montana Companies Have Earned Over</p>
-              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">{secondaryStat1}</h1>
-              <p className="font-[500]">In SBIR & STTR Funds</p>
+              <p className="font-[500]">{secondaryStat1.header}</p>
+              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">{secondaryStat1.statistic}</h1>
+              <p className="font-[500]">{secondaryStat1.footer}</p>
             </div>
             <div className=" text-center md:text-left my-10 md:my-0 md:border-l-[1px] border-l-mt-yellow-dark px-6 md:col-span-3 col-span-4">
             <h1 className="text-[32px] font-[500] mb-[20px]">{secondaryHeader1}</h1>
@@ -59,9 +77,9 @@ export default async function Home() {
             </div>
            <div className="grid grid-cols-4">
            <div className="md:col-span-1 col-span-4 gap-0 h-fit grid justify-items-center self-center mt-10 md:mt-0 text-center mx-4">
-              <p className="font-[500]"> To Date</p>
-              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">{secondaryStat2}</h1>
-              <p className="font-[500]">Montana Businesses Have Received Funding</p>
+              <p className="font-[500]"> {secondaryStat2.header}</p>
+              <h1 className="font-[900] text-[4rem] leading-[4rem] text-mt-yellow-dark">{secondaryStat2.statistic}</h1>
+              <p className="font-[500]">{secondaryStat2.footer}</p>
             </div>
             <div className="text-center md:text-left md:border-l-[1px] border-l-mt-yellow-dark px-6 col-span-4 md:col-span-3 my-10 md:my-0">
               <h1 className="text-[32px] font-[500] mb-[20px] ">{secondaryHeader2}</h1>
@@ -71,6 +89,12 @@ export default async function Home() {
             </div>
       </div>
       </div>
+
+
+      <div className="flex flex-col items-center w-full my-20 px-[20px] md:px-10">
+      {data.settings.showLatestEvent ? <Events/> : "" }
+      </div>
+
         <div className="flex flex-col items-center w-full my-20 px-[20px] md:px-10">
         <h1 className="max-w-[1400px] text-[40px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase w-full font-[100]">Resources</h1>
         <div className="max-w-[1400px] w-full flex flex-col mt-10">
@@ -118,7 +142,7 @@ export default async function Home() {
         </div>
         </div>
       </div>
-        <div className="grid">
+        <div className="grid px-5 md:px-10">
           <NewsLetter/>
         </div>
       </>

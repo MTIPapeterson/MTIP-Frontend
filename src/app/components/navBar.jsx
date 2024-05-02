@@ -1,24 +1,26 @@
 "use client"
-
-import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Link from 'next/link'
-import Hamburger from '@/assets/icons/Hamburger.svg'
-import Xsvg from '@/assets/icons/x.svg'
 
-export default function NavBar({resources, logo}) {
-    const [showResources, setShowResources] = useState(false)
+
+export default function NavBar({resources, logo, learningResources}) {
+    const [showDropDown, setShowDropDown] = useState('')
     const [showMenu, setShowMenu] = useState(false)
     
 
-    const Dropdown = ({data}) => {
+    const dropDownItems = {
+        'Resources' : resources,
+        'Guides' : learningResources
+    }
+
+    const Dropdown = ({name, data, route}) => {
         return (
-            <div className='relative' onMouseOver={()=> setShowResources(true)} onMouseOut={() => setShowResources(false)}>
-                <p className={`hover:cursor-pointer py-4 pl-[20px] text-[24px] md:text-[16px] md:pl-0 md:py-0 ${showResources ? "text-mt-blue-dark": ""}`} >Resources +</p>
-                {showResources ? 
+            <div className='relative' onMouseOver={()=> setShowDropDown(name)} onMouseOut={() => setShowDropDown('')}>
+                <p className={`hover:cursor-pointer py-4 pl-[20px] text-[24px] md:text-[16px] md:pl-0 md:py-0 ${showDropDown === name ? "text-mt-blue-dark": ""}`} >{name} +</p>
+                {showDropDown === name ? 
                 <div className='z-[20] absolute left-[-1rem] flex flex-col w-screen md:w-[250px] text-white'>
                 <div className='md:h-[26px] bg-black'></div>
-                {data ? <div className='flex flex-col border-solid border-[1px] pl-4 pb-4 bg-black border-gray-800 border-t-0'>{data?.map(page => <Link className="hover:text-mt-blue-dark ml-[20px] md:ml-0 transition duration-150 pt-2" key={page.title} href={`/resources/${page.pageName}`} onClick={()=> setShowResources(false)}>{page.title}</Link>)} </div> : ""}
+                {data ? <div className='flex flex-col border-solid border-[1px] pl-4 pb-4 bg-black border-gray-800 border-t-0'>{dropDownItems[name]?.map(page => <Link className="hover:text-mt-blue-dark ml-[20px] md:ml-0 transition duration-150 pt-2" key={page.title} href={`${page.pageName}`} onClick={()=> setShowDropDown('')}>{page.title}</Link>)} </div> : ""}
                 </div>
                 : ""}
             </div>
@@ -33,9 +35,12 @@ export default function NavBar({resources, logo}) {
             <Link className='pr-4 border-r-solid border-r-[1px] border-r-gray-800 hover:text-mt-blue-dark transition duration-150' href="/about">About</Link>
             <Link  className='pr-4 border-r-solid border-r-[1px] border-r-gray-800  hover:text-mt-blue-dark transition duration-150' href="/events">Events</Link>
             <div className='flex space-x-[15px] border-r-solid border-r-[1px] border-r-gray-800 pr-4 transition duration-150'>
-                <Dropdown data={resources}/>
+                <Dropdown data={resources} name="Resources" route="resources"/>
             </div>
-            <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150 border-r border-r-gray-800' href="/guides">Guides</Link>
+            {/* <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150 border-r border-r-gray-800' href="/guides">Guides</Link> */}
+            <div className='flex space-x-[15px] border-r-solid border-r-[1px] border-r-gray-800 pr-4 transition duration-150'>
+                <Dropdown data={resources} name="Guides" route="guides"/>
+            </div>
             <Link  className='pr-4 hover:text-mt-yellow-dark transition duration-150 ' href="/blog">Blog</Link>
         </div> 
         <Link  className='hidden md:flex justify-self-end px-6 py-2 rounded-[7px] bg-mt-blue-dark text-mt-blue-light uppercase hover:bg-mt-blue-light hover:text-mt-blue-dark transition duration-150' href="/contact">Contact us</Link>
@@ -59,7 +64,7 @@ export default function NavBar({resources, logo}) {
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-yellow-dark' href="/guides">Guides</Link>
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-yellow-dark' href="/blog">Blog</Link>
             <div className='flex w-full border-b-[1px] border-b-gray-800'>
-                <Dropdown data={resources}/>
+                <Dropdown data={resources} name="Resources" route="resources"/>
             </div>
             </div> : ""
             }

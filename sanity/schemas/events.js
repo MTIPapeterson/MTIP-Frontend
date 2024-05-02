@@ -11,7 +11,10 @@ export default {
         {
             name: 'date',
             title: 'Event Date',
-            type: 'date'
+            type: 'date',
+            options: {
+                dateFormat: 'dddd-MMMM-Do-YYYY'
+            }
         },
         {
             name: 'description',
