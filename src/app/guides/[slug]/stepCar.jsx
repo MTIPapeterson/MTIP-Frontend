@@ -70,7 +70,7 @@ export default function StepCar({steps}) {
     <div className='flex w-full my-10'>
           <div className='flex flex-col mr-0 md:mr-5 bg-white md:w-[300px]'>
             <h1 className='text-[32px] uppercase mb-2 md:flex hidden'>Steps</h1>
-            {steps.map((e,i) => <StepButton target={e.header} index={i}/>)}
+            {steps.map((e,i) => <StepButton key={i} target={e.header} index={i}/>)}
           </div>
            <div className='relative overflow-y-hidden w-full h-[550px] rounded-lg border-mt-blue-dark border flex items-center justify-center'>
           <Image 
