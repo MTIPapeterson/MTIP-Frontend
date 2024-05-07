@@ -37,52 +37,6 @@ export default {
                             type: 'array', 
                             of: [{type: 'block'}, {type: 'image'}]
                         },
-                        {
-                            name: 'documents',
-                            title: 'Documents',
-                            type: 'array',
-                            of: [
-                                {
-                                    type: 'object',
-                                    fields: [
-                                        {
-                                            name: 'name',
-                                            title: 'Name',
-                                            type: 'string'
-                                        },
-                                        {
-                                            name: 'file',
-                                            title: 'File',
-                                            type: 'file',
-                                            validation: rule => rule.required()
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            name: 'links',
-                            title: 'Links',
-                            type: 'array',
-                            of: [
-                                {
-                                    type: 'object',
-                                    fields: [
-                                        {
-                                            name: 'name',
-                                            title: 'Name',
-                                            type: 'string'
-                                        },
-                                        {
-                                            name: 'url',
-                                            title: 'Url',
-                                            type: 'url',
-                                            validation: rule => rule.required()
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                     ]
                 }
             ]

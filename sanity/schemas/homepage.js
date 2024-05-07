@@ -192,6 +192,34 @@ export default {
                 },
         ]},
         {
+            name: 'partnerLinks',
+            title: 'Partner Links',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        {
+                            name: 'logo',
+                            title: 'Logo',
+                            type: 'image'
+                        },
+                        {
+                            name: 'name',
+                            title: 'Name',
+                            type: 'string'
+                        },
+                        {
+                            name: 'url',
+                            title: 'Url',
+                            type: 'url',
+                            validation: rule => rule.required()
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             name: "quotesList",
             title: "Quotes List",
             type: "document",

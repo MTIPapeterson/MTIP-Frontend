@@ -6,21 +6,27 @@ export default async function Footer() {
 
   const settings = await getContent("settings")
   const resources = await getContent("resources")
+  const guides = await getContent("learningResources")
   
   return (
     <div className='bg-black text-white border-t-gray-800 border-t flex justify-center'>
-      <div className='w-full max-w-[1400px] mx-[40px]'>
+      <div className='w-full max-w-[1400px] md:mx-10 mx-5'>
         <div className='grid grid-flow-row text-start md:text-left md:grid-flow-col'>
                 <div className='mt-4 flex flex-col border-gray-800 md:border-t-0 md:border-l py-[20px] md:py-0 md:px-[20px]'>
                   <Link href="/about" className='uppercase hover:text-mt-blue-dark'>about</Link>
+                  <Link href="/events" className='uppercase hover:text-mt-blue-dark'>events</Link>
+                  <Link href="/blog" className='uppercase hover:text-mt-blue-dark'>Blog</Link>
                   <p className='uppercase'>resources+</p>
                   <div className='flex flex-col max-w-[200px] ml-4 my-2'>
-                    {resources.map(r => <Link href={`/resources/${r.pageName}`} className='hover:text-mt-blue-dark pb-2' key={r.pageName}>{r.title}</Link>)}
-                   
+                    {resources.map(r => <Link href={`${r.pageName}`} className='hover:text-mt-blue-dark pb-2' key={r.pageName}>{r.title}</Link>)}
+                  </div>
+                  <p className='uppercase'>guides+</p>
+                  <div className='flex flex-col max-w-[200px] ml-4 my-2'>
+                    <Link href="/guides" className='hover:text-mt-blue-dark pb-2'>Detailed Guides</Link>
+                    {guides.map(r => <Link href={`${r.pageName}`} className='hover:text-mt-blue-dark pb-2' key={r.pageName}>{r.title}</Link>)}
+                    
                   </div>
                   
-                  <Link href="/events" className='uppercase hover:text-mt-blue-dark'>events</Link>
-                  <Link href="/guides" className='uppercase hover:text-mt-blue-dark'>Guides</Link>
                 </div>
                 <div className='mt-4 flex flex-col border-gray-800 border-t md:border-t-0 md:border-l font-[200] py-[20px] md:py-0 md:px-[20px]'>
                   <p className='font-[200]'><span className='font-[800]'>{settings.director}</span>, Program Director</p>

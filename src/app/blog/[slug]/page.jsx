@@ -8,7 +8,6 @@ export default async function BlogPost({params}) {
     
     const post = await getBlogPost(params.slug)
     const allBlog = await getContent("blogs")
-    console.log(post)
 
   return (
     <div className="flex justify-center w-full">

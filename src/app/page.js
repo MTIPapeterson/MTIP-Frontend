@@ -23,6 +23,7 @@ export default async function Home() {
   const resourceLinksTitle = data.resourceLinkList.header
   const quoteHeader = data.quotesList.header
   const quotes = data.quotesList.quotes
+  const partnerLinks = data.partnerLinks
 
   const Events = () => {
     return (
@@ -115,10 +116,14 @@ export default async function Home() {
         )}
       </div>
       <WaveSVG className="w-full h-[100px] md:h-[200px]"/>
+      <h1 className="max-w-[1400px] text-[40px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase w-full font-[100] my-10">Our Partners</h1>
+    
+
+      <div className='grid grid-flow-col w-[90vw] max-w-[1400px] md:mt-0 mt-4 overflow-x-scroll'>
+          {partnerLinks.map( p => <a href={p.url} key={p.url} className="w-[200px]" ><img className='border-l border-l-gray-300 p-4' src={p.logo} /></a>)}
       </div>
       </div>
-     
-      
+      </div>
       <div className="bg-black py-[40px] px-[20px] flex text-white justify-center">
         <div className="max-w-[1400px] w-full flex flex-col mx-[20px] md:mx-[40px]">
         <h2 className="self-center px-[20px] pt-[20px] pb-[40px] uppercase text-[24px] font-[450]">{quoteHeader}</h2>

@@ -21,6 +21,9 @@ module.exports = {
             'dark': '#FFB600',
             'light': '#FFFEF0',
           },
+        },
+        backgroundImage : {
+          'topoMap' : "url('/src/assets/icons/topo-bg3.png')"
         }
     },
   },
@@ -28,6 +31,8 @@ module.exports = {
     function ({ addVariant }) {
         addVariant('child', '& > *');
         addVariant('child-hover', '& > *:hover');
-    }
+
+    },
+    require('daisyui'),
 ],
 };

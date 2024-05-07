@@ -91,7 +91,7 @@ export function formatDate(dateString) {
         (day % 10 > 3) ? 0 : (day % 100 - day % 10 != 10) * day % 10
     ];
 
-    return formattedDate.replace(/(\d+)(,)/, `$1${suffix}$2`);
+    return formattedDate.replace(/(\d+)(,)/, `$1$2`);
 }
 
 const BLOGS =  groq`*[_type == "blogPost"] | order(_createdAt desc) {
@@ -112,7 +112,12 @@ const HOMEPAGE = groq`*[_type == "homepage"][0]{
     actionLinkList,
     resourceLinkList,
     quotesList,
-    settings
+    settings,
+    "partnerLinks": partnerLinks[]{
+        "logo": logo.asset->url,
+        name,
+        url
+    }
 }
 `
 const ABOUT = groq`*[_type == "about"][0]{
