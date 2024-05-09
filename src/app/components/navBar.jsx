@@ -54,23 +54,24 @@ export default function NavBar({resources, logo, learningResources}) {
    const NavNarrow = () => {
     return ( 
     <div className='text-white text-[16px] uppercase md:hidden items-center flex h-[60px] my-2 w-full'>
-        <Link href="/" className='pr-[15px] font-[600] text-[32px] w-full'><img className='h-[40px]' src={logo} alt="MTIP LOGO"/></Link>
+        <Link href="/" className='pr-[15px] font-[600] text-[32px] w-fit'><img className='h-[40px]' src={logo} alt="MTIP LOGO"/></Link>
         <div className='justify-end w-full flex items-center'>
-        <Link  className='mr-[5px] justify-self-end px-4 rounded-[7px] h-fit py-[4px] bg-mt-blue-dark text-mt-blue-light uppercase hover:bg-mt-blue-light hover:text-mt-blue-dark transition duration-150' href="/contact">Contact us</Link>
-        <button className='text-[40px] w-[40px] text-center hover:text-mt-blue-dark' onClick={() => {setShowMenu(!showMenu)} }>{showMenu ? "–": "="}</button>
+        <Link  className='mr-4 justify-self-end px-4 rounded-[7px] h-fit py-[4px] bg-mt-blue-dark text-mt-blue-light uppercase hover:bg-mt-blue-light hover:text-mt-blue-dark transition duration-150' href="/contact">Contact us</Link>
+        <button className='text-[40px] w-[40px] text-center hover:text-mt-blue-dark pb-2' onClick={() => {setShowMenu(!showMenu)} }>{showMenu ? "–": "="}</button>
         </div>
         { showMenu ? 
             <div className='w-full border-b-solid border-b-black border-b-[1px] z-10 position absolute top-[77px] left-0 flex flex-col bg-black'>
+            <div className='flex w-full border-b-[1px] border-b-gray-800'>
+                <Dropdown data={resources} name="Resources"/>
+            </div>
+            <div className='flex w-full border-b-[1px] border-b-gray-800'>
+                <Dropdown data={resources} name="Guides"/>
+            </div>
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-blue-dark' href="/about">About</Link>
             <Link onClick={() => {setShowMenu(false)} }  className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-blue-dark' href="/contact">Contact</Link>
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-blue-dark' href="/events">Events</Link>
             <Link onClick={() => {setShowMenu(false)} } className='py-4 pl-[20px] text-[24px] border-b-solid border-b-[1px] border-b-gray-800 hover:underline hover:text-mt-yellow-dark' href="/blog">Blog</Link>
-            <div className='flex w-full border-b-[1px] border-b-gray-800'>
-                <Dropdown data={resources} name="Resources"/>
-            </div>
-            <div className='flex space-x-[15px] border-r-solid border-r-[1px] border-r-gray-800 pr-4 transition duration-150'>
-                <Dropdown data={resources} name="Guides"/>
-            </div>
+            
             </div> : ""
             }
     </div>   

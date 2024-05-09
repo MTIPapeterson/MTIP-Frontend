@@ -6,6 +6,9 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      'md': '900px',
+    },
     extend: {
         fontFamily: {
           satoshi: ['Satoshi', 'sans-serif'],

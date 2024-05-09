@@ -23,8 +23,7 @@ export default async function Footer() {
                   <p className='uppercase'>guides+</p>
                   <div className='flex flex-col max-w-[200px] ml-4 my-2'>
                     <Link href="/guides" className='hover:text-mt-blue-dark pb-2'>Detailed Guides</Link>
-                    {guides.map(r => <Link href={`${r.pageName}`} className='hover:text-mt-blue-dark pb-2' key={r.pageName}>{r.title}</Link>)}
-                    
+                    {guides.map(r => <Link href={`${r.pageName}`} className='hover:text-mt-blue-dark pb-2' key={r.pageName}>{r.title}</Link>)}  
                   </div>
                   
                 </div>

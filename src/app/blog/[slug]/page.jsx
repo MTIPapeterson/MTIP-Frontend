@@ -17,7 +17,7 @@ export default async function BlogPost({params}) {
             <div className="max-w-[800px] text-[18px] font-[350] md:pr-6">
                 <PortableText value={post.bodyText} components={textStyle}/>
             </div>
-            <div className="flex flex-col bg-mt-blue-light p-4 rounded-lg ml-0 w-full md:w-[300px]">
+            <div className="flex flex-col bg-mt-blue-light h-fit p-4 rounded-lg ml-0 w-full md:w-[300px]">
                 <h1 className='text-[20px] font-[500] mb-4'>Recent Blog Post</h1>
                 <div className='flex flex-col'>
                 {allBlog.slice(0,5).map(b => <Link key={b.pageName} href={`/blog/${b.pageName}`} className='mb-2 hover:text-mt-blue-dark'>{b.title}</Link>)}

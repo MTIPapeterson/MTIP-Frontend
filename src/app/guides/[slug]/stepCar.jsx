@@ -67,12 +67,12 @@ export default function StepCar({steps}) {
     }, [steps]);
 
   return (
-    <div className='flex w-full my-10'>
-          <div className='flex flex-col mr-0 md:mr-5 bg-white md:w-[300px]'>
+    <div className='flex flex-col md:flex-row w-full my-10'>
+          <div className='flex flex-row md:flex-col mr-0 md:mr-5 bg-white md:w-[300px]'>
             <h1 className='text-[32px] uppercase mb-2 md:flex hidden'>Steps</h1>
             {steps.map((e,i) => <StepButton key={i} target={e.header} index={i}/>)}
           </div>
-           <div className='relative overflow-y-hidden w-full h-[550px] rounded-lg border-mt-blue-dark border flex items-center justify-center'>
+           <div className='relative overflow-y-hidden w-full h-[600px] md:h-[700px] rounded-lg border-mt-blue-dark border flex items-center justify-center'>
           <Image 
             className='absolute'
             src={'/topo-bg.webp'}
@@ -80,11 +80,11 @@ export default function StepCar({steps}) {
             width={1200}
           />
           
-          <div className='h-[550px] md:w-fit carousel carousel-vertical rounded-lg'>
-            {steps.map((e,i) => <div ref={e => elementRefs.current[i] = e} key={e.header} id={e.header} className='h-[550px] carousel-item pl-8 md:pl-10 flex'>
+          <div className='h-[600px] md:h-[700px] md:w-fit carousel carousel-vertical rounded-lg'>
+            {steps.map((e,i) => <div ref={e => elementRefs.current[i] = e} key={e.header} id={e.header} className='h-[600px] md:h-[700px] carousel-item pl-8 md:pl-10 flex'>
               <div className="flex flex-col border-l-2 border-mt-blue-dark pl-6 md:pl-10 border-dashed relative center" >
-                <div className='rounded-full absolute h-12 w-12 border-2 border-mt-blue-dark -left-6 -top-6 flex items-center justify-center text-mt-blue-dark bg-mt-blue-light mt-20 text-[24px] font-[700]'>{i + 1}</div>
-              <div className='max-w-[600px] p-2 mx-2 bg-mt-blue-light rounded-md mt-14'>  
+                <div className='rounded-full absolute h-12 w-12 border-2 border-mt-blue-dark -left-6 -top-6 flex items-center justify-center text-mt-blue-dark bg-mt-blue-light mt-12 md:mt-20 text-[24px] font-[700]'>{i + 1}</div>
+              <div className='max-w-[600px] p-2 mx-2 bg-mt-blue-light rounded-md mt-6 md:mt-14 overflow-y-scroll max-h-[550px] md:max-h-[650px]'>  
                 <h1 className='text-[20px] md:text-[24px] font-[500] mb-5 text-mt-blue-dark'>{e.header}</h1>
                 <PortableText value={e.bodyText} components={textStyle}/>
               </div>

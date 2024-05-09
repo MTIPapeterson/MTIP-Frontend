@@ -19,11 +19,11 @@ export default async function Page({ params }) {
                 <PortableText value={data.bodyText} components={textStyle}/>
             </div>
             {data.files || data.links ? 
-            <div className="flex flex-col bg-mt-blue-light p-4 rounded-lg ml-0 h-full md:min-h-[700px] w-full md:min-w-[300px]">
+            <div className="flex flex-col bg-mt-blue-light p-4 rounded-lg ml-0 h-fit w-full md:max-w-[300px]">
             {data.files ? <div className="mb-6"> {data.files.map( d => <div className="border-[1px] border-black p-2 rounded-md h-min text-center text-[20px] uppercase hover:bg-black hover:text-white cursor-pointer flex hover:fill-white items-center justify-center" key={d.url}><FileSvg className="mr-2"/><a href={d.url} download={d.name}>{d.name}</a></div>)} </div> : ""}
             <div className="flex flex-col">
                 <p className="font-[600] text-gray-800 mb-[5px]">Other Resources</p>
-                {data.links ? data.links.map(l => <div className="flex items-center hover:text-mt-blue-dark hover:fill-mt-blue-dark" key={l.url}><a className="font-[50] text-[16px]" href={l.url}>{l.name}</a><ArrowSvg className="w-[11px] ml-[8px] mt-[2px]"/></div>): ""}
+                {data.links ? data.links.map(l => <div className="flex items-start hover:text-mt-blue-dark hover:fill-mt-blue-dark pb-2" key={l.url}><a className="font-[50] text-[16px] md:max-w-[250px]" href={l.url}>{l.name}</a><ArrowSvg className="w-[11px] h-[11px] ml-[8px] mt-[5px]"/></div>): ""}
             </div>
             </div>: ""}
             
