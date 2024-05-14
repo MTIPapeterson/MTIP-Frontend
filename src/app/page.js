@@ -32,7 +32,7 @@ export default async function Home() {
         <h1 className="col-span-1 mb-5 text-[32px] font-[500]">Upcoming Events</h1>
         <div className="flex flex-col">
         {events.map(e => <div key={e.title} className="bg-mt-blue-light rounded-md p-2 mb-4 grid md:grid-cols-3 grid-cols-1">
-          <h2 className="pb-2 mb-2 md:mb-0 md:pb-0 md:pr-4 border-b md:border-r md:border-b-0 border-mt-blue-dark md:mr-4 font-[600] text-[20px] md:text-[30px] text-center text-mt-blue-dark col-span-1">{formatDate(e.date)}</h2>
+          <h2 className="pb-2 mb-2 md:mb-0 md:pb-0 md:pr-4 border-b md:border-r md:border-b-0 border-mt-blue-dark md:mr-4 font-[600] text-[20px] md:text-[30px] text-center text-mt-blue-dark col-span-1">{e.date ? formatDate(e.date) : "Upcoming"}</h2>
           <div className="flex flex-col col-span-1 md:col-span-2">
           <h2 className="text-[20px] font-[450] self-center md:self-start text-center md:text-left">{e.title}</h2>
           <a className="text-[18px] text-mt-blue-dark underline hover:text-black mt-2 text-center md:text-left self-center md:self-start" href="/events">Learn More</a>
@@ -115,8 +115,15 @@ export default async function Home() {
         </div>
         )}
       </div>
+
       <WaveSVG className="w-full h-[100px] md:h-[200px]"/>
-     
+     <div className="flex flex-col justify-center items-center mb-20 px-5 md:px-10">
+      <h1 className="max-w-[1400px] text-[40px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase w-full font-[100] my-10">Our Partners</h1>
+    
+      <div className='grid max-w-[1400px] grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-center justify-center gap-4 max-h-[600px] overflow-y-scroll md:max-h-fit'>
+          {partnerLinks.map( p => <a href={p.url} key={p.url} className="bg-mt-blue-light flex items-center justify-center h-[150px] w-[150px] rounded-lg" ><img className='max-w-[100px]' src={p.logo} /></a>)}
+      </div>
+      </div>
       </div>
       </div>
       <div className="bg-black py-[40px] px-[20px] flex text-white justify-center">
@@ -144,13 +151,7 @@ export default async function Home() {
       <div className="grid px-5 md:px-10">
           <NewsLetter/>
         </div>
-      <div className="flex flex-col justify-center items-center mb-20 px-5 md:px-10">
-      <h1 className="max-w-[1400px] text-[40px] md:text-[60px] border-b-solid border-b-[1px] border-black uppercase w-full font-[100] my-10">Our Partners</h1>
-    
-      <div className='grid max-w-[1400px] grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-center justify-center gap-4 max-h-[600px] overflow-y-scroll md:max-h-fit'>
-          {partnerLinks.map( p => <a href={p.url} key={p.url} className="bg-mt-blue-light flex items-center justify-center h-[150px] w-[150px] rounded-lg" ><img className='max-w-[100px]' src={p.logo} /></a>)}
-      </div>
-      </div>
+      
        
       </>
   );
