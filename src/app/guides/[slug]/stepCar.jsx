@@ -4,11 +4,9 @@ import { PortableText } from '@portabletext/react'
 import { textStyle } from '../../components/portableTextStyle'
 import Image from 'next/image'
 
-export default function StepCar({steps}) {
+export default function StepCar({steps, stepHeader}) {
 
     const [currTarget, setCurrTarget] = useState(steps[0].header)
-
-    console.log(steps)
 
     const handleClick = (event) => {
         event.preventDefault(); // Prevent the default anchor behavior
@@ -27,7 +25,7 @@ export default function StepCar({steps}) {
 
     const StepButton = ({target, index}) => {
         return(
-            <a className={`hover:text-mt-blue-dark ${target === currTarget ? "text-mt-blue-dark": "text-black"} pb-2 flex`} key={target} href={`#${target}`} onClick={handleClick}><span className={`font-[600] text-mt-blue-dark p-2 rounded-full pt-0 pb-0 mr-2 ${target === currTarget ? "bg-mt-blue-light" : "bg-white"} `}>{index + 1}</span><span className='hidden md:flex'>{target}</span></a>
+            <a className={`hover:text-mt-blue-dark ${target === currTarget ? "text-mt-blue-dark": "text-black"} pb-2 flex`} key={target} href={`#${target}`} onClick={handleClick}><span className={`font-[600] text-mt-blue-dark p-2 rounded-full pt-0 pb-0 mr-2 ${target === currTarget ? "bg-mt-blue-light" : "bg-white"} `}>{index + 1}</span><span className=''>{target}</span></a>
         )
     } 
 
@@ -68,8 +66,8 @@ export default function StepCar({steps}) {
 
   return (
     <div className='flex flex-col md:flex-row w-full my-10'>
-          <div className='flex flex-row md:flex-col mr-0 md:mr-5 bg-white md:w-[300px]'>
-            <h1 className='text-[32px] uppercase mb-2 md:flex hidden'>Steps</h1>
+          <div className='flex flex-col mb-4 md:mb-0 mr-0 md:mr-5 bg-white md:w-[300px]'>
+            <h1 className='text-[32px] uppercase mb-2'>{stepHeader ? stepHeader : "Steps"}</h1>
             {steps.map((e,i) => <StepButton key={i} target={e.header} index={i}/>)}
           </div>
            <div className='relative overflow-y-hidden w-full h-[600px] md:h-[700px] rounded-lg border-mt-blue-dark border flex items-center justify-center'>

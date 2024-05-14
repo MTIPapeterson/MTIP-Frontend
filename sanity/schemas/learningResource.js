@@ -19,6 +19,12 @@ export default {
             description: 'The page route that appears at the end of the url. *Cannot Contain Spaces*'
         },
         {
+            name: 'stepHeader',
+            title: 'Step Header',
+            type: 'string',
+            description: 'If left blank this will default to `Steps`'
+        },
+        {
             name: 'steps',
             title: 'Steps',
             type: 'array',

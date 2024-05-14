@@ -52,6 +52,7 @@ export async function getLearningResource (slug) {
     return client.fetch(
         groq`*[_type == "learningResources" && pageName.current == "${slug}"][0]{
             title,
+            stepHeader,
             "steps": steps[]{
                 header,
                 bodyText,

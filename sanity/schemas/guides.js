@@ -13,11 +13,6 @@ export default {
             title: 'Body Text',
             type: 'array', 
             of: [{type: 'block'}, {type: 'image'}]
-        },
-        {
-            name: 'image',
-            title: 'Image',
-            type: 'image'
         }
     ]
 }
