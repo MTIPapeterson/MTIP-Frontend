@@ -17,7 +17,7 @@ sanity makes it easy to create custom page schemas that appear in [sanity studio
 2. Import and add to the types array in ```/sanity/schema.js```. The schema and its fields will now appear in sanity studio.
 3. We then need to query and get this content from sanity using [GROQ](https://www.sanity.io/docs/query-cheat-sheet).
 4. In ```/sanity/sanit-utils.js``` create the appropriate query for your schema (examples can be found in the file) and add the constant to the 'contentQueries' dictionary. 
-5. Next js makes it easy to fetch to content from sanity. Simply add the ```getContent(pageName)``` function to any async component and pass in the query key add to the contentQueries dictionary. 
+5. Next js makes it easy to fetch content from sanity. Simply use the ```getContent(pageName)``` function in any async component and pass in the query key previously added to the contentQueries dictionary. 
 
 ##### heres an example:
 
