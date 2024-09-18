@@ -187,3 +187,11 @@ const contentQueries = {
     'learningResources': LEARNING_RESOURCES
 }
 
+const query = `
+  *[_type == "post"]{
+    title,
+    "videoUrl": video.asset->url
+  }
+`;
+
+
