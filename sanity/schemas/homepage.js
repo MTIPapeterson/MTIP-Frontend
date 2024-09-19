@@ -192,14 +192,6 @@ export default {
                 },
         ]},
         {
-            title: 'Video',
-            name: 'video',
-            type: 'url', //for a hosted video like YouTube/Vimeo
-              options: {
-                accept: 'video/*'
-  }
-}
-        {
             name: 'partnerLinks',
             title: 'Partner Links',
             type: 'array',
