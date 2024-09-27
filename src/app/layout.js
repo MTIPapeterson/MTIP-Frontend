@@ -22,6 +22,9 @@ export default function RootLayout({ children }) {
         </div>
         <Analytics/>
         <SpeedInsights/>
+        {/* <!-- Start of HubSpot Embed Code --> */}
+            <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/20251044.js"></script>
+        {/* <!-- End of HubSpot Embed Code --> */}
       </body>
     </html>
   );
